@@ -1,0 +1,39 @@
+import React from 'react';
+import Logo from '../../../assets/CinemaIcon.svg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTwitter, faInstagram, faFacebookSquare } from '@fortawesome/free-brands-svg-icons';
+import { Link } from 'react-router-dom';
+
+const Header = (): React.JSX.Element => {
+  return (
+    <header className="flex flex-col px-10">
+      <div className="flex flex-row justify-between w-full my-2">
+        <div className="flex flex-row gap-5">
+          <a href="http://www.facebook.com">
+            <FontAwesomeIcon className="h-6 text-white" icon={faFacebookSquare} />
+          </a>
+          <a href="http://www.twitter.com">
+            <FontAwesomeIcon className="h-6 text-white" icon={faTwitter} />
+          </a>
+          <a href="http://www.instagram.com">
+            {' '}
+            <FontAwesomeIcon className="h-6 text-white" icon={faInstagram} />
+          </a>
+        </div>
+        <div className="flex flex-row gap-2">
+          <Link className="login_reg_btn text-white" to={'auth?mode=login'}>
+            Account
+          </Link>
+        </div>
+      </div>
+      <div className=" flex flex-row w-96 items-center justify-center gap-5 py-4">
+        <Link to={'/'} className="flex flex-row w-96 items-center justify-center gap-5 py-4">
+          <img className="bg-white w-10" src={Logo} alt="Cinema" />
+          <h1 className="text-[40px] text-white">Cinema</h1>
+        </Link>
+      </div>
+    </header>
+  );
+};
+
+export default Header;
