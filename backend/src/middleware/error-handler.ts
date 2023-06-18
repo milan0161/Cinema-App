@@ -16,7 +16,9 @@ const errorHandlerMiddleware = (error: Error, req: Request, res: Response, next:
     return res.status(error.statusCode).json({ message: error.message });
   }
   return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-    message: 'SOmething went wrong, please try again later',
+    message: error.message
+    
+    // 'Something went wrong, please try again later',
   });
 };
 

@@ -10,17 +10,56 @@ datasource db {
   url      = env("POSTGRES_URI")
 }
 
-
 model User {
-  id String @id @default(uuid())
+  id        String   @id @default(uuid())
   createdAt DateTime @default(now())
-  
-  username String @unique
-  password String
-  role Role @default(USER)
+  username  String   @unique
+  password  String
+  role      Role     @default(USER)
 }
 
-enum Role{
+model Movie {
+  id          String       @id @default(uuid())
+  title       String
+  genre       String
+  projections Projection[]
+  year        Int
+  actors      String
+  director    String
+  description String
+  image       String
+}
+
+// model Genre {
+//   id    String  @id @default(uuid())
+//   name  String  @unique
+//   movie Movie[]
+// }
+
+model Projection {
+  id      String   @id @default(uuid())
+  movie   Movie    @relation(fields: [movieId], references: [id])
+  movieId String
+  date    DateTime
+  hall    Hall     @relation(fields: [hallId], references: [id])
+  hallId  String
+}
+
+model Hall {
+  id         String       @id @default(uuid())
+  name       String       @unique
+  capacity   Seat[]
+  projection Projection[]
+}
+
+model Seat {
+  id     Int    @id @default(autoincrement())
+  number Int
+  hall   Hall   @relation(fields: [hallId], references: [id], onDelete: Cascade)
+  hallId String
+}
+
+enum Role {
   USER
   ADMIN
 }

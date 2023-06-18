@@ -27,6 +27,6 @@ exports.signAtoken = void 0;
 require("dotenv/config");
 const jwt = __importStar(require("jsonwebtoken"));
 const signAtoken = (username, role) => {
-    return jwt.sign({ username: username, role: role }, process.env.A_TOKEN_SECRET, { expiresIn: '1h' });
+    return jwt.sign({ username: username, role: role }, process.env.A_TOKEN_SECRET, { expiresIn: '4h' });
 };
 exports.signAtoken = signAtoken;

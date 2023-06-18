@@ -29,4 +29,16 @@
   .log_reg_input {
     @apply border border-slate-300 rounded  px-2 py-1 outline-none placeholder_style;
   }
+  .acc_menu_btn {
+    @apply transition duration-200 hover:translate-x-2;
+  }
+  .admin_nav_li {
+    @apply border-b-2 w-full text-center;
+  }
+  .admin_nav_a {
+    @apply text-blue-600 text-lg;
+  }
+  .span_bold {
+    @apply font-bold;
+  }
 }

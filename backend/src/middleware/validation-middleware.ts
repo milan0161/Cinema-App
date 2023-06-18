@@ -1,8 +1,7 @@
 import { validate, ValidationError } from 'class-validator';
 import { RequestHandler } from 'express';
 import { sanitize, Trim } from 'class-sanitizer';
-import { plainToClass, plainToInstance } from 'class-transformer';
-import { CustomApiError } from '../errors/custom-error';
+import { plainToInstance } from 'class-transformer';
 import { BadRequestError } from '../errors/bad-request';
 
 function dtoValidationMiddleware(type: any, skipMissingProperties = false): RequestHandler {

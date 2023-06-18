@@ -5,7 +5,7 @@ import AuthService from '../services/auth.service';
 import { AuthDto } from '../dto/auth.dto';
 
 class AuthController {
-  private authService = new AuthService();
+  public authService = new AuthService();
 
   public registerUser = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {

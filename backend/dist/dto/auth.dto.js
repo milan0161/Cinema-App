@@ -13,6 +13,8 @@ exports.AuthDto = void 0;
 const class_sanitizer_1 = require("class-sanitizer");
 const class_validator_1 = require("class-validator");
 class AuthDto {
+    username;
+    password;
 }
 __decorate([
     (0, class_validator_1.IsString)(),
