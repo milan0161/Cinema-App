@@ -161,3 +161,4 @@ D:\Cinema\Cinema-Planner\API\obj\Debug\net7.0\API.pdb
 D:\Cinema\Cinema-Planner\API\obj\Debug\net7.0\API.genruntimeconfig.cache
 D:\Cinema\Cinema-Planner\API\obj\Debug\net7.0\ref\API.dll
 D:\Cinema\Cinema-Planner\API\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Milan Programiranje\Cinema Project\API\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
