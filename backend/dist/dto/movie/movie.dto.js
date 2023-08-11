@@ -19,6 +19,7 @@ class ReqMovieDto {
     year;
     actors;
     director;
+    duration;
     description;
     image;
 }
@@ -53,6 +54,11 @@ __decorate([
     (0, class_sanitizer_1.Trim)(),
     __metadata("design:type", String)
 ], ReqMovieDto.prototype, "director", void 0);
+__decorate([
+    (0, class_validator_1.IsNotEmpty)(),
+    (0, class_sanitizer_1.Trim)(),
+    __metadata("design:type", Number)
+], ReqMovieDto.prototype, "duration", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)({ message: 'Description must be provided' }),
     (0, class_validator_1.IsString)(),

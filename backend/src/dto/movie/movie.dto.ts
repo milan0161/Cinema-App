@@ -22,6 +22,7 @@ export interface ResMovieDtoInterface {
   actors: string;
   director: string;
   description: string;
+  duration: number;
   image: string;
 }
 
@@ -50,6 +51,10 @@ export class ReqMovieDto implements ReqMovieDtoInterface {
   @IsString()
   @Trim()
   director!: string;
+
+  @IsNotEmpty()
+  @Trim()
+  duration!: number;
 
   @IsNotEmpty({ message: 'Description must be provided' })
   @IsString()

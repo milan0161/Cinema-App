@@ -55,5 +55,19 @@ class MovieService {
     }
     return 'Movie successfully deleted';
   };
+  public getPictures = async () => {
+    const movie = await this.movie.findMany({
+      take: 5,
+      select: {
+        image: true,
+        description: true,
+        title: true,
+      },
+    });
+    if (movie.length === 0) {
+      throw new NotFoundError('No pictures found');
+    }
+    return movie;
+  };
 }
 export default MovieService;

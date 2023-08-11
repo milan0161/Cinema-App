@@ -3,6 +3,7 @@ import { getAToken } from '../utils/saveToken';
 import { BaseQueryFn } from '@reduxjs/toolkit/dist/query';
 
 export const baseUrl = import.meta.env.VITE_REACT_APP_BASE_URL;
+export const publicUrl = import.meta.env.VITE_REACT_APP_BASE_PUBLIC_URL;
 
 const axiosInstance = axios.create({
   baseURL: baseUrl,

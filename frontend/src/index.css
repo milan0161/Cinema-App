@@ -39,6 +39,25 @@
     @apply text-blue-600 text-lg;
   }
   .span_bold {
-    @apply font-bold;
+    @apply font-bold mr-1;
+  }
+  .nav_li {
+    @apply hover:text-blue-600 cursor-pointer text-base sm:text-base md:text-lg xl:text-xl;
+  }
+  .nav_li a {
+    @apply text-white hover:text-blue-600;
+  }
+  .single_movie:hover h2,
+  .single_movie:hover button {
+    visibility: visible;
+  }
+  .single_movie:hover img {
+    opacity: 0.1;
+  }
+  .movie_descrip {
+    @apply text-xl ml-2;
+  }
+  .movie_descrip strong {
+    @apply mr-2;
   }
 }

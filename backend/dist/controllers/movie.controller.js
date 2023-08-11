@@ -11,7 +11,7 @@ class MovieController {
     movieService = new movie_service_1.default();
     createMovie = async (req, res, next) => {
         try {
-            const { actors, description, director, genre, title, year } = req.body;
+            const { actors, description, director, genre, title, year, duration } = req.body;
             if (!req.file) {
                 throw new bad_request_1.BadRequestError('Image must be provided');
             }
@@ -22,6 +22,7 @@ class MovieController {
             movieDto.director = director;
             movieDto.year = Number(year);
             movieDto.genre = genre;
+            movieDto.duration = Number(duration);
             movieDto.image = req.file;
             const dto = await this.movieService.createMovie(movieDto);
             res.status(http_status_codes_1.StatusCodes.CREATED).json({ movie: dto });
@@ -54,6 +55,15 @@ class MovieController {
             const id = req.params.id;
             const message = await this.movieService.deleteMovie(id);
             res.status(http_status_codes_1.StatusCodes.OK).json({ message: message });
+        }
+        catch (error) {
+            next(error);
+        }
+    };
+    getPictures = async (req, res, next) => {
+        try {
+            const pictures = await this.movieService.getPictures();
+            res.status(http_status_codes_1.StatusCodes.OK).json({ images: pictures });
         }
         catch (error) {
             next(error);

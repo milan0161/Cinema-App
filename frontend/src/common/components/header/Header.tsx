@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faInstagram, faFacebookSquare } from '@fortawesome/free-brands-svg-icons';
 import { Link } from 'react-router-dom';
 import AccountMenu from './AccountMenu';
+import MainNav from '../navigation/MainNav';
 
 const Header = (): React.JSX.Element => {
   const userState = useAppSelector((state) => state.auth);
@@ -50,6 +51,9 @@ const Header = (): React.JSX.Element => {
           <h1 className="text-[40px] text-white">Cinema</h1>
         </Link>
       </div>
+      <nav className="w-full mx-auto lg:w-1/2">
+        <MainNav />
+      </nav>
     </header>
   );
 };

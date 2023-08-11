@@ -44,6 +44,16 @@ const AddMovieForm = () => {
         />
       </div>
       <div className="flex flex-col px-2">
+        <label htmlFor="duration">Duration</label>
+        <input
+          placeholder="@example/Francis Ford Cuppola"
+          className="log_reg_input"
+          name="duration"
+          type="number"
+          id="duration"
+        />
+      </div>
+      <div className="flex flex-col px-2">
         <label htmlFor="description">Description:</label>
         <textarea
           placeholder="@example/Don Vito Corleone, head of a mafia family, decides to hand over his empire to his youngest son Michael. However, his decision unintentionally puts the lives of his loved ones in grave danger."

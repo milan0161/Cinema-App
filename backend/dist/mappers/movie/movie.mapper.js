@@ -12,6 +12,7 @@ class MovieMapper {
             genre: movie.genre,
             image: movie.image,
             year: movie.year,
+            duration: movie.duration,
         };
     }
 }

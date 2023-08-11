@@ -20,6 +20,7 @@ model User {
 
 model Movie {
   id          String       @id @default(uuid())
+  createdAt   DateTime     @default(now())
   title       String
   genre       String
   projections Projection[]
@@ -28,6 +29,7 @@ model Movie {
   director    String
   description String
   image       String
+  duration    Int
 }
 
 // model Genre {
@@ -53,10 +55,11 @@ model Hall {
 }
 
 model Seat {
-  id     Int    @id @default(autoincrement())
-  number Int
-  hall   Hall   @relation(fields: [hallId], references: [id], onDelete: Cascade)
-  hallId String
+  id       Int     @id @default(autoincrement())
+  number   Int
+  hall     Hall    @relation(fields: [hallId], references: [id], onDelete: Cascade)
+  hallId   String
+  reserved Boolean @default(false)
 }
 
 enum Role {

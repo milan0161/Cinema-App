@@ -8,6 +8,10 @@ import AdminDashBoardPage from './pages/admin/AdminDashBoardPage';
 import AdminMoviesPage from './pages/admin/AdminMoviesPage';
 import AdminProjectionsPage from './pages/admin/AdminProjectionsPage';
 import AdminHallsPage from './pages/admin/AdminHallsPage';
+import ProgramPage from './pages/ProgramPage';
+import MoviesPage from './pages/MoviesPage';
+import SingleMoviePage from './pages/SingleMoviePage';
+import MovieLayout from './pages/MovieLayout';
 
 function App() {
   const router = createBrowserRouter([
@@ -46,6 +50,25 @@ function App() {
             {
               path: 'halls',
               element: <AdminHallsPage />,
+            },
+          ],
+        },
+        {
+          path: 'program',
+          element: <ProgramPage />,
+        },
+        {
+          path: 'movies',
+          // element: <MoviesPage />,
+          element: <MovieLayout />,
+          children: [
+            {
+              index: true,
+              element: <MoviesPage />,
+            },
+            {
+              path: ':id',
+              element: <SingleMoviePage />,
             },
           ],
         },

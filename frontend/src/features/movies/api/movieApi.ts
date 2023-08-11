@@ -1,5 +1,5 @@
 import { apiSlice } from '../../../app/api/apiSlice';
-import { Movie } from '../types';
+import { Images, Movie } from '../types';
 
 const movieApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -19,7 +19,18 @@ const movieApi = apiSlice.injectEndpoints({
       }),
       providesTags: ['MOVIES'],
     }),
+    getImages: builder.query<Images, void>({
+      query: () => ({
+        url: '/movie/get-pictures',
+        method: 'GET',
+      }),
+    }),
+    getSingleMovie: builder.query<{ movie: Movie }, string>({
+      query: (id) => ({
+        url: `/movie/get-single-movie/${id}`,
+      }),
+    }),
   }),
 });
 
-export const { useAddMovieMutation, useGetMoviesQuery } = movieApi;
+export const { useAddMovieMutation, useGetMoviesQuery, useGetImagesQuery, useGetSingleMovieQuery } = movieApi;

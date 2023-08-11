@@ -18,6 +18,7 @@ export interface ResMovieDtoInterface {
     actors: string;
     director: string;
     description: string;
+    duration: number;
     image: string;
 }
 export declare class ReqMovieDto implements ReqMovieDtoInterface {
@@ -26,6 +27,7 @@ export declare class ReqMovieDto implements ReqMovieDtoInterface {
     year: number;
     actors: string;
     director: string;
+    duration: number;
     description: string;
     image: typeof req.file;
 }

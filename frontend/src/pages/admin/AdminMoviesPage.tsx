@@ -1,7 +1,7 @@
 // import { useState } from 'react';
 import AdminSearchBar from '../../common/components/admin/AdminSearchBar';
 import AddMovieForm from '../../common/components/form/AddMovieForm';
-import MoviesList from '../../features/movies/data/MoviesList';
+import MoviesList from '../../features/movies/data/AdminMoviesList';
 
 const AdminMoviesPage = () => {
   // const [formIsVisible, setFormIsVisible] = useState<boolean>(true);

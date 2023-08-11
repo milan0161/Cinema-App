@@ -14,4 +14,6 @@ movieRouter.post('/movie/create', admin_middleware_1.default, (0, validation_mid
 movieRouter.get('/movie/get-all', movieController.getAllMovies);
 movieRouter.get('/movie/get-single-movie/:id', movieController.getSingleMovie);
 movieRouter.delete('/movie/delete/:id', admin_middleware_1.default, movieController.deleteMovie);
+//route that returns 5 pictures of last addded movies for slider.
+movieRouter.get('/movie/get-pictures', movieController.getPictures);
 exports.default = movieRouter;

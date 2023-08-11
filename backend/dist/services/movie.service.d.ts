@@ -5,5 +5,10 @@ declare class MovieService {
     getAllMovies: () => Promise<ResMovieDtoInterface[]>;
     getSingleMovie: (id: string) => Promise<ResMovieDtoInterface>;
     deleteMovie: (id: string) => Promise<string>;
+    getPictures: () => Promise<{
+        title: string;
+        description: string;
+        image: string;
+    }[]>;
 }
 export default MovieService;

@@ -5,5 +5,6 @@ declare class MovieController {
     getAllMovies: (req: Request, res: Response, next: NextFunction) => Promise<void>;
     getSingleMovie: (req: Request, res: Response, next: NextFunction) => Promise<void>;
     deleteMovie: (req: Request, res: Response, next: NextFunction) => Promise<void>;
+    getPictures: (req: Request, res: Response, next: NextFunction) => Promise<void>;
 }
 export default MovieController;

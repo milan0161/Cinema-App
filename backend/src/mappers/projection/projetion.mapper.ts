@@ -20,6 +20,7 @@ export class ProjectionMapper {
         image: data.movie.image,
         title: data.movie.title,
         year: data.movie.year,
+        duration: data.movie.duration,
       },
       projections: data.date,
     };

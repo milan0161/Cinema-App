@@ -1,52 +1,21 @@
-import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Movie } from '../types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDiagramProject } from '@fortawesome/free-solid-svg-icons';
-import ProjectionFrom from '../../../common/components/form/ProjectionFrom';
+
 type SingleMovieProps = {
   movie: Movie;
 };
-const SingleMovie = ({ movie }: SingleMovieProps): React.JSX.Element => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const addProjectionHandler = () => {
-    setIsOpen(true);
-  };
+const SingleMovie = ({ movie }: SingleMovieProps) => {
   const publicUrl = import.meta.env.VITE_REACT_APP_BASE_PUBLIC_URL;
 
   return (
-    <li className="flex flex-col border mt-10 border-slate-300 rounded w-[500px] h-[320px] p-2">
-      {isOpen && <ProjectionFrom movieId={movie.id} onClick={setIsOpen} />}
-      <div className="grid grid-col-9 gap-x-4">
-        <h2 className="col-start-1 col-span-8 text-center">{movie.title}</h2>
-        <button
-          onClick={addProjectionHandler}
-          className="col-start-9 border w-12 h-8 border-slate-300 rounded hover:scale-105 duration-200"
-        >
-          <FontAwesomeIcon icon={faDiagramProject} />
-        </button>
-      </div>
-      <div className="flex flex-row my-2">
-        <div className="w-[200px] h-full">
-          <img className="w-32 m-auto" src={`${publicUrl}${movie.image}`} alt={movie.title} />
-        </div>
-        <div className="flex flex-col gap-2 justify-center ">
-          <p>
-            <span className="span_bold">Year:</span> {movie.year}
-          </p>
-          <p>
-            <span className="span_bold">Genre:</span> {movie.genre}
-          </p>
-          <p>
-            <span className="span_bold">Actors:</span>
-            {movie.actors}
-          </p>
-          <p>
-            <span className="span_bold">Director:</span>
-            {movie.director}
-          </p>
-        </div>
-      </div>
-      <p className="">{movie.description}</p>
+    <li className="w-full h-[350px] relative col-span-1 single_movie border border-slate-400 flex  justify-center transition duration-300">
+      <img className="h-full transition duration-300" src={`${publicUrl}${movie.image}`} alt="" />
+      <button className="absolute top-[60%] left-18 invisible border border-slate-50 py-1 px-2 rounded">
+        <Link className="text-white" to={`${movie.id}`}>
+          Find out more
+        </Link>
+      </button>
+      <h2 className="absolute top-10 text-center w-full z-1 invisible">{movie.title}</h2>
     </li>
   );
 };
