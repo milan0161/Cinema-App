@@ -1,4 +1,3 @@
-using API.Data;
 using API.DTOs;
 using API.Entities;
 using API.Interfaces;
@@ -9,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
-  public class AuthController : BaseApiController
+    public class AuthController : BaseApiController
   {
     private readonly IMapper _mapper;
     private readonly UserManager<User> _userManager;
@@ -17,9 +16,9 @@ namespace API.Controllers
 
     public AuthController(UserManager<User> userManager, IMapper mapper, ITokenProvider tokenProvider)
     {
-      this._tokenProvider = tokenProvider;
-      this._userManager = userManager;
-      this._mapper = mapper;
+      _tokenProvider = tokenProvider;
+      _userManager = userManager;
+      _mapper = mapper;
 
     }
     [HttpPost("register")]

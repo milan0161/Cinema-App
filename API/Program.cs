@@ -5,6 +5,9 @@ using API.Interfaces;
 
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System.Text;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,8 +27,20 @@ builder.Services.AddIdentityCore<User>(opt =>
 })
         .AddRoles<Role>()
         .AddRoleManager<RoleManager<Role>>()
-        .AddEntityFrameworkStores<DataContext>();
-
+        .AddEntityFrameworkStores<DataContext>()
+        .AddDefaultTokenProviders();
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        .AddJwtBearer(opt =>
+        {
+            opt.TokenValidationParameters =
+            new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["AccessTokenKey"])),
+                ValidateIssuer = false,
+                ValidateAudience = false
+            };
+        });
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<ITokenProvider, TokenProvider>();
@@ -38,7 +53,7 @@ app.UseHttpsRedirection();
 
 app.UseAuthentication();
 
-app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllers();
 

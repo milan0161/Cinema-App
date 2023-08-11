@@ -25,7 +25,7 @@ namespace API.Helpers
             var signingCredentials = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
             var token = new JwtSecurityToken(
                 claims: claims,
-                expires: new DateTime().AddHours(1),
+                expires: DateTime.Now.AddHours(1),
                 signingCredentials: signingCredentials
             );
             // var tokenDescirption = new SecurityTokenDescriptor{
