@@ -28,11 +28,7 @@ namespace API.Helpers
                 expires: new DateTime().AddHours(1),
                 signingCredentials: signingCredentials
             );
-            // var tokenDescirption = new SecurityTokenDescriptor{
-            //     Subject = new ClaimsIdentity(claims),
-            //     Expires = DateTime.Now.AddHours(1),
-            //     SigningCredentials = signingCredentials
-            // };
+
             string tokenValue = new JwtSecurityTokenHandler().WriteToken(token);
             return tokenValue;
         }
