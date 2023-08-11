@@ -22,7 +22,7 @@ namespace API.Controllers
 
     }
     [HttpPost("register")]
-    public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
+    public async Task<ActionResult<UserDto>> Register([FromBody] RegisterDto registerDto)
     {
       if (await UserExists(registerDto.Email)) return BadRequest("User with that email adress already exist");
       var user = _mapper.Map<User>(registerDto);
@@ -36,6 +36,21 @@ namespace API.Controllers
       };
 
     }
+    [HttpPost("login")]
+    public async Task<ActionResult<UserDto>> Login([FromBody] LoginDto loginDto)
+    {
+      var user = await _userManager.Users.FirstOrDefaultAsync(x => x.NormalizedEmail == loginDto.Email.ToUpper());
+      if (user == null) return Unauthorized("Invalid email adress");
+
+      var result = await _userManager.CheckPasswordAsync(user, loginDto.Password);
+      if (!result) return Unauthorized("Password is invalid");
+      return new UserDto
+      {
+        Username = user.UserName,
+        Token = _tokenProvider.GenerateJWT(user)
+      };
+    }
+
 
     private async Task<bool> UserExists(string email)
     {
