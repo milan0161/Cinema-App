@@ -3755,19 +3755,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Milan016\\.nuget\\packages\\": {}
+    "C:\\Users\\Andjela11\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Milan Programiranje\\Cinema Project\\API\\API.csproj",
+      "projectUniqueName": "D:\\Cinema\\Cinema-Planner\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "D:\\Milan Programiranje\\Cinema Project\\API\\API.csproj",
-      "packagesPath": "C:\\Users\\Milan016\\.nuget\\packages\\",
-      "outputPath": "D:\\Milan Programiranje\\Cinema Project\\API\\obj\\",
+      "projectPath": "D:\\Cinema\\Cinema-Planner\\API\\API.csproj",
+      "packagesPath": "C:\\Users\\Andjela11\\.nuget\\packages\\",
+      "outputPath": "D:\\Cinema\\Cinema-Planner\\API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Milan016\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Andjela11\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3775,7 +3775,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\sdk\\7.0.304\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
+        "C:\\Program Files\\dotnet\\sdk\\7.0.306\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -3840,7 +3840,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
       }
     }
   }
