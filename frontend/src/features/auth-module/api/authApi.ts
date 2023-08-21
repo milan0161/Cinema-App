@@ -1,9 +1,9 @@
 import { apiSlice } from '../../../app/api/apiSlice';
-import { ReqLogin, ResLogin } from '../types';
+import { ReqLogin, ReqRegister, ResLogin } from '../types';
 
 const authApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    register: builder.mutation<ResLogin, [ReqLogin, string]>({
+    register: builder.mutation<ResLogin, [ReqRegister, string]>({
       query: (data) => ({
         url: `auth/${data[1]}`,
         method: 'POST',

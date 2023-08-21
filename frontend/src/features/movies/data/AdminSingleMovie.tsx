@@ -27,7 +27,11 @@ const AdminSingleMovie = ({ movie }: SingleMovieProps): React.JSX.Element => {
       </div>
       <div className="flex flex-row my-2">
         <div className="w-[200px] h-full">
-          <img className="w-32 m-auto" src={`${publicUrl}${movie.image}`} alt={movie.title} />
+          <img
+            className="w-32 m-auto"
+            src={`${publicUrl}${movie.mainPhoto}`}
+            alt={movie.title}
+          />
         </div>
         <div className="flex flex-col gap-2 justify-center ">
           <p>

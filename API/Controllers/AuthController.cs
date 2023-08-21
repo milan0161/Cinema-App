@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
-    public class AuthController : BaseApiController
+  public class AuthController : BaseApiController
   {
     private readonly IMapper _mapper;
     private readonly UserManager<User> _userManager;
@@ -31,7 +31,7 @@ namespace API.Controllers
       if (!result.Succeeded) return BadRequest(result.Errors);
       return new UserDto
       {
-        Token = _tokenProvider.GenerateJWT(user),
+        Token = await _tokenProvider.GenerateJWT(user),
         Username = user.UserName
       };
 
@@ -47,7 +47,7 @@ namespace API.Controllers
       return new UserDto
       {
         Username = user.UserName,
-        Token = _tokenProvider.GenerateJWT(user)
+        Token = await _tokenProvider.GenerateJWT(user)
       };
     }
 

@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
-import { useAppSelector } from '../../../app/store';
+import { useAppSelector } from '../../../app/store/store';
 import Logo from '../../../assets/CinemaIcon.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTwitter, faInstagram, faFacebookSquare } from '@fortawesome/free-brands-svg-icons';
+import {
+  faTwitter,
+  faInstagram,
+  faFacebookSquare,
+} from '@fortawesome/free-brands-svg-icons';
 import { Link } from 'react-router-dom';
 import AccountMenu from './AccountMenu';
 import MainNav from '../navigation/MainNav';
@@ -16,7 +20,10 @@ const Header = (): React.JSX.Element => {
       <div className="flex flex-row justify-between w-full my-2">
         <div className="flex flex-row gap-5">
           <a href="http://www.facebook.com">
-            <FontAwesomeIcon className="h-6 text-white" icon={faFacebookSquare} />
+            <FontAwesomeIcon
+              className="h-6 text-white"
+              icon={faFacebookSquare}
+            />
           </a>
           <a href="http://www.twitter.com">
             <FontAwesomeIcon className="h-6 text-white" icon={faTwitter} />
@@ -42,11 +49,19 @@ const Header = (): React.JSX.Element => {
               {userState.username}
             </button>
           )}
-          {isVisible && <AccountMenu setIsVisible={setIsVisible} isAdmin={userState.isAdmin} />}
+          {isVisible && (
+            <AccountMenu
+              setIsVisible={setIsVisible}
+              isAdmin={userState.isAdmin}
+            />
+          )}
         </div>
       </div>
       <div className=" flex flex-row w-96 items-center justify-center gap-5 py-4">
-        <Link to={'/'} className="flex flex-row w-96 items-center justify-center gap-5 py-4">
+        <Link
+          to={'/'}
+          className="flex flex-row w-96 items-center justify-center gap-5 py-4"
+        >
           <img className="bg-white w-10" src={Logo} alt="Cinema" />
           <h1 className="text-[40px] text-white">Cinema</h1>
         </Link>

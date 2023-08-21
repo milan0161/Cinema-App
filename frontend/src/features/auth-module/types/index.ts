@@ -1,14 +1,19 @@
 export interface InitialAuthState {
   username: string;
-  role: 'ADMIN' | 'USER';
+  token: string;
+  role: 'Admin' | 'Client';
   isAuth: boolean;
   isAdmin: boolean;
 }
 
 export interface ReqLogin {
-  username: string;
+  email: string;
   password: string;
 }
 export interface ResLogin {
-  aToken: string;
+  token: string;
+}
+
+export interface ReqRegister extends ReqLogin {
+  username: string;
 }

@@ -60,4 +60,10 @@
   .movie_descrip strong {
     @apply mr-2;
   }
+  .validation_error {
+    @apply text-red-600 px-1;
+  }
+  .validation_invalid {
+    @apply border-red-500 bg-red-200 border-2;
+  }
 }

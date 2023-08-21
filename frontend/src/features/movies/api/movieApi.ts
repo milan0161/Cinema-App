@@ -3,18 +3,18 @@ import { Images, Movie } from '../types';
 
 const movieApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    addMovie: builder.mutation({
+    addMovie: builder.mutation<void, Movie>({
       query: (data) => ({
-        url: 'movie/create',
+        url: 'movie/add-movie',
         method: 'POST',
         headers: { Authorization: true },
         data,
       }),
       invalidatesTags: ['MOVIES'],
     }),
-    getMovies: builder.query<{ movies: Movie[] }, void>({
+    getMovies: builder.query<Movie[], void>({
       query: () => ({
-        url: 'movie/get-all',
+        url: 'movie',
         method: 'GET',
       }),
       providesTags: ['MOVIES'],
@@ -25,7 +25,7 @@ const movieApi = apiSlice.injectEndpoints({
         method: 'GET',
       }),
     }),
-    getSingleMovie: builder.query<{ movie: Movie }, string>({
+    getSingleMovie: builder.query<Movie, number>({
       query: (id) => ({
         url: `/movie/get-single-movie/${id}`,
       }),
@@ -33,4 +33,9 @@ const movieApi = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useAddMovieMutation, useGetMoviesQuery, useGetImagesQuery, useGetSingleMovieQuery } = movieApi;
+export const {
+  useAddMovieMutation,
+  useGetMoviesQuery,
+  useGetImagesQuery,
+  useGetSingleMovieQuery,
+} = movieApi;

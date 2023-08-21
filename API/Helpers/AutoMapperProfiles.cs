@@ -10,6 +10,8 @@ namespace API.Helpers
         {
             CreateMap<User, UserDto>();
             CreateMap<RegisterDto, User>();
+            CreateMap<Movie, MovieDto>();
+
         }
     }
 }

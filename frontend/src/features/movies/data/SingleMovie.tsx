@@ -9,13 +9,19 @@ const SingleMovie = ({ movie }: SingleMovieProps) => {
 
   return (
     <li className="w-full h-[350px] relative col-span-1 single_movie border border-slate-400 flex  justify-center transition duration-300">
-      <img className="h-full transition duration-300" src={`${publicUrl}${movie.image}`} alt="" />
+      <img
+        className="h-full transition duration-300"
+        src={`${publicUrl}${movie.mainPhoto}`}
+        alt=""
+      />
       <button className="absolute top-[60%] left-18 invisible border border-slate-50 py-1 px-2 rounded">
         <Link className="text-white" to={`${movie.id}`}>
           Find out more
         </Link>
       </button>
-      <h2 className="absolute top-10 text-center w-full z-1 invisible">{movie.title}</h2>
+      <h2 className="absolute top-10 text-center w-full z-1 invisible">
+        {movie.title}
+      </h2>
     </li>
   );
 };

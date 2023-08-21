@@ -1,13 +1,16 @@
-import { useAppDispatch } from '../../../app/store';
+import { useAppDispatch } from '../../../app/store/store';
 import { logout } from '../../../features/auth-module/authSlice';
-import { removeToken } from '../../../utils/saveToken';
+import { removeToken } from '../../../app/utils/saveToken';
 import { useNavigate } from 'react-router-dom';
 type AccMenuProps = {
   isAdmin: boolean;
   setIsVisible: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const AccountMenu = ({ isAdmin, setIsVisible }: AccMenuProps): React.JSX.Element => {
+const AccountMenu = ({
+  isAdmin,
+  setIsVisible,
+}: AccMenuProps): React.JSX.Element => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const logoutHandler = (e: React.MouseEvent<HTMLButtonElement>): void => {

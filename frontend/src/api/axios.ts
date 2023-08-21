@@ -1,5 +1,11 @@
-import axios, { Axios, AxiosError, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
-import { getAToken } from '../utils/saveToken';
+import axios, {
+  Axios,
+  AxiosError,
+  AxiosRequestConfig,
+  AxiosResponse,
+  InternalAxiosRequestConfig,
+} from 'axios';
+import { getAToken } from '../app/utils/saveToken';
 import { BaseQueryFn } from '@reduxjs/toolkit/dist/query';
 
 export const baseUrl = import.meta.env.VITE_REACT_APP_BASE_URL;

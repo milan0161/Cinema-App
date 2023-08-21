@@ -5,6 +5,6 @@ namespace API.Interfaces
 {
     public interface ITokenProvider
     {
-        string GenerateJWT(User user);
+        Task<string> GenerateJWT(User user);
     }
 }
