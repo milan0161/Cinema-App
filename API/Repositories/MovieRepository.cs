@@ -3,6 +3,7 @@ using API.DTOs;
 using API.Entities;
 using API.Interfaces;
 using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -24,19 +25,21 @@ namespace API.Repositories
 
         }
 
-        public async Task<Movie> GetMovieById(int id)
+        public async Task<MovieDetailsDto> GetMovieById(int id)
         {
-            return await _context.Movies.Where(x => x.Id == id).Include(x => x.CoverPhoto).FirstOrDefaultAsync();
+
+            return await _context.Movies.Where(x => x.Id == id).ProjectTo<MovieDetailsDto>(_mapper.ConfigurationProvider).FirstOrDefaultAsync();
         }
 
-        public async Task<Movie> GetMovieByName(string name)
+        public async Task<MovieDetailsDto> GetMovieByName(string name)
         {
-            return await _context.Movies.Where(x => x.Name == name).FirstOrDefaultAsync();
+            return await _context.Movies.Where(x => x.Name == name).ProjectTo<MovieDetailsDto>(_mapper.ConfigurationProvider).FirstOrDefaultAsync();
         }
 
-        public async Task<List<Movie>> GetMovies()
+        public async Task<List<MovieDto>> GetMovies()
         {
-            return await _context.Movies.ToListAsync();
+            var movies = await _context.Movies.ToListAsync();
+            return _mapper.Map<List<MovieDto>>(movies);
         }
 
         public async Task<bool> SaveAllAsync()

@@ -8,5 +8,6 @@ namespace API.DTOs
         public int Duration { get; set; }
         public string MainPhoto { get; set; }
         public string Genre { get; set; }
+        public int Year { get; set; }
     }
 }
