@@ -6,9 +6,9 @@ namespace API.Interfaces
 {
     public interface IMovieRepository
     {
-        Task<List<Movie>> GetMovies();
-        Task<Movie> GetMovieById(int id);
-        Task<Movie> GetMovieByName(string name);
+        Task<List<MovieDto>> GetMovies();
+        Task<MovieDetailsDto> GetMovieById(int id);
+        Task<MovieDetailsDto> GetMovieByName(string name);
         void AddMovieAsync(Movie movie);
         public Task<bool> MovieExsist(string movieName, int movieLength);
         Task<bool> SaveAllAsync();

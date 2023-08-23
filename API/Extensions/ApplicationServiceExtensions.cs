@@ -19,6 +19,7 @@ namespace API.Helpers
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddScoped<ITokenProvider, TokenProvider>();
             services.AddScoped<IMovieRepository, MovieRepository>();
+            services.AddScoped<IProjectionRepository, ProjectionRepository>();
             return services;
         }
     }

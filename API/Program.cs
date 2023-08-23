@@ -41,6 +41,7 @@ try
     var roleManager = services.GetRequiredService<RoleManager<Role>>();
     await context.Database.MigrateAsync();
     await Seed.SeedUsers(userManager, roleManager);
+    await SeedProjections.AddProjections(context);
 }
 catch (Exception ex)
 {

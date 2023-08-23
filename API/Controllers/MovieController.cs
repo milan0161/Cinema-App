@@ -18,13 +18,14 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetMovies()
+        public async Task<ActionResult<List<MovieDto>>> GetMovies()
         {
             return Ok(await _movieRepository.GetMovies());
+
         }
 
         [HttpGet("get-single-movie/{id}")]
-        public async Task<ActionResult> GetMovieById(int id)
+        public async Task<ActionResult<MovieDetailsDto>> GetMovieById(int id)
         {
             var movie = await _movieRepository.GetMovieById(id);
             if (movie != null)
@@ -36,9 +37,14 @@ namespace API.Controllers
         }
 
         [HttpGet("{name}")]
-        public async Task<ActionResult> GetMovieByName(string name)
+        public async Task<ActionResult<MovieDetailsDto>> GetMovieByName(string name)
         {
-            return Ok(await _movieRepository.GetMovieByName(name));
+            var movie = await _movieRepository.GetMovieByName(name);
+            if (movie != null)
+            {
+                return Ok(movie);
+            }
+            return BadRequest("Can not find movie");
         }
         [Authorize(Policy = "RequireAdminRole")]
         [HttpPost("add-movie")]
