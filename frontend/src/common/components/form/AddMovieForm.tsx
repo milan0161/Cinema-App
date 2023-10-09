@@ -2,7 +2,8 @@ import { useRef } from 'react';
 import { useAddMovieMutation } from '../../../features/movies/api/movieApi';
 import { useForm } from 'react-hook-form';
 import { AddMovieFormValue } from '../../../features/movies/types';
-
+import { motion, AnimatePresence } from 'framer-motion';
+import { showSuccess } from '../../../app/utils/ToastMsg';
 type AddMovieFormProps = {
   cancelHandler: () => void;
 };
@@ -24,11 +25,15 @@ const AddMovieForm = ({ cancelHandler }: AddMovieFormProps) => {
       .then(() => {
         reset();
         cancelHandler();
+        showSuccess('You have successfully added a movie');
       });
   };
 
   return (
-    <form
+    <motion.form
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 30 }}
       onSubmit={addMovieHandler}
       ref={formRef}
       className=" bg-white rounded text-slate-950 lg:w-2/3 2xl:w-1/2 m-auto mt-5"
@@ -130,7 +135,7 @@ const AddMovieForm = ({ cancelHandler }: AddMovieFormProps) => {
       <div className="flex flex-col px-2">
         <label htmlFor="director">Director</label>
         <input
-          placeholder="@example/Francis Ford Cuppola"
+          placeholder="@example/Francis Ford Coppola"
           className={
             errors.director
               ? 'log_reg_input validation_invalid'
@@ -218,7 +223,7 @@ const AddMovieForm = ({ cancelHandler }: AddMovieFormProps) => {
           Cancel
         </button>
       </div>
-    </form>
+    </motion.form>
   );
 };
 

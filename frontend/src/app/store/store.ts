@@ -3,11 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import type { TypedUseSelectorHook } from 'react-redux';
 import authSlice from '../../features/auth-module/authSlice';
 import { apiSlice } from '../api/apiSlice';
+import adminSlice from '../../features/admin/state/adminSlice';
 
 export const store = configureStore({
   reducer: {
     auth: authSlice,
     [apiSlice.reducerPath]: apiSlice.reducer,
+    admin: adminSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(apiSlice.middleware),

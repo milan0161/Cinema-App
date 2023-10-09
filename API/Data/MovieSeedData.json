@@ -1,0 +1,232 @@
+[
+    {
+        "Name": "The Shawshank Redemption",
+        "Country": "USA",
+        "Duration": 144,
+        "Genre": "Drama",
+        "Year": 1994,
+        "Actors" : "Tim Robbins, Morgan Freeman, Bob Gunton",
+        "Director": "Frank Darabont",
+        "Description": "Over the course of several years, two convicts form a friendship, seeking consolation and, eventually, redemption through basic compassion.",
+        "MainPhoto": "https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_FMjpg_UX1200_.jpg"
+    },
+    {
+        "Name": "The Godfather",
+        "Country": "USA",
+        "Duration": 175,
+        "Genre": "Crime, Drama",
+        "Year": 1972,
+        "Actors" : "Marlon Brando, Al Pacino, James Caan",
+        "Director": "Francis Ford Coppola",
+        "Description": "Don Vito Corleone, head of a mafia family, decides to hand over his empire to his youngest son Michael. However, his decision unintentionally puts the lives of his loved ones in grave danger.",
+        "MainPhoto": "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg"
+    },
+    {
+        "Name": "The Godfather Part II",
+        "Country": "USA",
+        "Duration": 202,
+        "Genre": "Crime, Drama",
+        "Year": 1974,
+        "Actors" : "Robert De Niro, Al Pacino, Robert Duvall",
+        "Director": "Francis Ford Coppola",
+        "Description": "The early life and career of Vito Corleone in 1920s New York City is portrayed, while his son, Michael, expands and tightens his grip on the family crime syndicate.",
+        "MainPhoto": "https://m.media-amazon.com/images/M/MV5BMWMwMGQzZTItY2JlNC00OWZiLWIyMDctNDk2ZDQ2YjRjMWQ0XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg"
+    },
+    {
+                "Name": "The Dark Knight",
+        "Country": "USA",
+        "Duration": 152,
+        "Genre": "Action, Crime, Drama",
+        "Year": 2008,
+        "Actors" : "Christian Bale, Heath Ledger, Aaron Eckhart",
+        "Director": "Christopher Nolan",
+        "Description": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
+        "MainPhoto": "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_.jpg"
+    },
+    {
+                "Name": "12 Angry Men",
+        "Country": "USA",
+        "Duration": 96,
+        "Genre": "Crime, Drama",
+        "Year": 1957,
+        "Actors" : "Hentry Fonda, Lee J. Cobb, Martin Balsam",
+        "Director": "Sidney Lumet",
+        "Description": "The jury in a New York City murder trial is frustrated by a single member whose skeptical caution forces them to more carefully consider the evidence before jumping to a hasty verdict.",
+        "MainPhoto": "https://upload.wikimedia.org/wikipedia/commons/b/b5/12_Angry_Men_%281957_film_poster%29.jpg"
+    },
+    {
+                "Name": "Schindler's List",
+        "Country": "USA",
+        "Duration": 195,
+        "Genre": "Biography, Drama, History",
+        "Year": 1993,
+        "Actors" : "Liam Neeson, Ralph Fiennes, Ben Kingsley",
+        "Director": "Steven Spielberg",
+        "Description": "In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.",
+        "MainPhoto": "https://m.media-amazon.com/images/M/MV5BNDE4OTMxMTctNmRhYy00NWE2LTg3YzItYTk3M2UwOTU5Njg4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg"
+    },
+    {
+                "Name": "The Lord of the Rings: The Return of the King",
+        "Country": "USA",
+        "Duration": 201,
+        "Genre": "Action, Adventure, Drama",
+        "Year": 2003,
+        "Actors" : "Elijah Wood, Viggo Mortensen, Ian McKellen",
+        "Director": "Peter Jackson",
+        "Description": "TGandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.",
+        "MainPhoto": "https://m.media-amazon.com/images/M/MV5BNzA5ZDNlZWMtM2NhNS00NDJjLTk4NDItYTRmY2EwMWZlMTY3XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_FMjpg_UX800_.jpg"
+    },
+    {
+                "Name": "Pulp Fiction",
+        "Country": "USA",
+        "Duration": 154,
+        "Genre": "Crime, Drama",
+        "Year": 1994,
+        "Actors" : "John Travolta, Uma Thurman, Samuel L. Jackson",
+        "Director": "Quentin Tarantino",
+        "Description": "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
+        "MainPhoto": "https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg"
+    },
+    {
+                "Name": "The Lord of the Rings: The Fellowship of the Ring",
+        "Country": "USA",
+        "Duration": 178,
+        "Genre": "Action, Adventure, Drama",
+        "Year": 2001,
+        "Actors" : "Elijah Wood, Orlando Bloom, Ian McKellen",
+        "Director": "Peter Jackson",
+        "Description": "A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.",
+        "MainPhoto": "https://m.media-amazon.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_.jpg"
+    },
+    {
+        
+        "Name": "The Good, the Bad and the Ugly",
+        "Country": "USA",
+        "Duration": 148,
+        "Genre": "Adventure, Western",
+        "Year": 1966,
+        "Actors" : "Clint Eastwood, Eli Wallach, Lee Van Cleef",
+        "Director": "Sergio Leone",
+        "Description": "A bounty hunting scam joins two men in an uneasy alliance against a third in a race to find a fortune in gold buried in a remote cemetery.",
+        "MainPhoto": "https://m.media-amazon.com/images/M/MV5BNjJlYmNkZGItM2NhYy00MjlmLTk5NmQtNjg1NmM2ODU4OTMwXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_FMjpg_UY3000_.jpg"
+    },
+    {
+        
+        "Name": "Forrest Gump",
+        "Country": "USA",
+        "Duration": 144,
+        "Genre": "Drama, Romance",
+        "Year": 1994,
+        "Actors" : "Tom Hanks, Robin Wright, Gary Sinise",
+        "Director": "Robert Zemeckis",
+        "Description": "The history of the United States from the 1950s to the '70s unfolds from the perspective of an Alabama man with an IQ of 75, who yearns to be reunited with his childhood sweetheart.",
+        "MainPhoto": "https://m.media-amazon.com/images/M/MV5BNWIwODRlZTUtY2U3ZS00Yzg1LWJhNzYtMmZiYmEyNmU1NjMzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg"
+    },
+    {
+        
+        "Name": "Fight Club",
+        "Country": "USA",
+        "Duration": 138,
+        "Genre": "Drama",
+        "Year": 1999,
+        "Actors" : "Brad Pitt, Edward Norton, Meat Loaf",
+        "Director": "David Fincher",
+        "Description": "An insomniac office worker and a devil-may-care soap maker form an underground fight club that evolves into much more.",
+        "MainPhoto": "https://m.media-amazon.com/images/M/MV5BODQ0OWJiMzktYjNlYi00MzcwLThlZWMtMzRkYTY4ZDgxNzgxXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg"
+    },
+    {
+        
+        "Name": "The Lord of the Rings: The Two Towers",
+        "Country": "USA",
+        "Duration": 179,
+        "Genre": "Action, Adventure, Drama",
+        "Year": 2002,
+        "Actors" : "Elijah Wood, Ian McKellen, Viggo Mortensen",
+        "Director": "Peter Jackson",
+        "Description": "While Frodo and Sam edge closer to Mordor with the help of the shifty Gollum, the divided fellowship makes a stand against Sauron's new ally, Saruman, and his hordes of Isengard.",
+        "MainPhoto": "https://m.media-amazon.com/images/M/MV5BZGMxZTdjZmYtMmE2Ni00ZTdkLWI5NTgtNjlmMjBiNzU2MmI5XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_FMjpg_UX1000_.jpg"
+    },
+    {
+        
+        "Name": "Inception",
+        "Country": "USA",
+        "Duration": 148,
+        "Genre": "Action, Adventure, Sci-Fi",
+        "Year": 2010,
+        "Actors" : "Leonardo DiCaprio, Joseph Gordon-Levitt, Elliot Page",
+        "Director": "Christopher Nolan",
+        "Description": "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O., but his tragic past may doom the project and his team to disaster.",
+        "MainPhoto": "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_.jpg"
+    },
+    {
+        
+        "Name": "Star Wars: Episode V - The Empire Strikes Back",
+        "Country": "USA",
+        "Duration": 124,
+        "Genre": "Action, Adventure, Fantasy",
+        "Year": 1980,
+        "Actors" : "Mark Hamill, Harrison Ford, Carrie Fisher",
+        "Director": "Irvin Kershner",
+        "Description": "After the Rebels are overpowered by the Empire, Luke Skywalker begins his Jedi training with Yoda, while his friends are pursued across the galaxy by Darth Vader and bounty hunter Boba Fett.",
+        "MainPhoto": "https://m.media-amazon.com/images/M/MV5BYmU1NDRjNDgtMzhiMi00NjZmLTg5NGItZDNiZjU5NTU4OTE0XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg"
+    },
+    {
+        
+        "Name": "The Matrix",
+        "Country": "USA",
+        "Duration": 136,
+        "Genre": "Action, Sci-Fi",
+        "Year": 1999,
+        "Actors" : "Keanu Reeves, Laurence Fishburne, Carrie-Anne Moss",
+        "Director": "Lana Wachowski, Lilly Wachowski",
+        "Description": "When a beautiful stranger leads computer hacker Neo to a forbidding underworld, he discovers the shocking truth--the life he knows is the elaborate deception of an evil cyber-intelligence.",
+        "MainPhoto": "https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg"
+    },
+    {
+        
+        "Name": "GoodFellas",
+        "Country": "USA",
+        "Duration": 145,
+        "Genre": "Biography, Crime, Drama",
+        "Year": 1990,
+        "Actors" : "Robert De Niro, Ray Liotta, Joe Pesci",
+        "Director": "Martin Scorsese",
+        "Description": "The story of Henry Hill and his life in the mafia, covering his relationship with his wife Karen and his mob partners Jimmy Conway and Tommy DeVito.",
+        "MainPhoto": "https://m.media-amazon.com/images/M/MV5BY2NkZjEzMDgtN2RjYy00YzM1LWI4ZmQtMjIwYjFjNmI3ZGEwXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg"
+    },
+    {
+        
+        "Name": "One Flew Over the Cuckoo's Nest",
+        "Country": "USA",
+        "Duration": 133,
+        "Genre": "Drama",
+        "Year": 1975,
+        "Actors" : "Jack Nicholson, Louise Fletcher, Michael Berryman",
+        "Director": "Milos Forman",
+        "Description": "In the Fall of 1963, a Korean War veteran and criminal pleads insanity and is admitted to a mental institution, where he rallies up the scared patients against the tyrannical nurse.",
+        "MainPhoto": "https://m.media-amazon.com/images/M/MV5BZjA0OWVhOTAtYWQxNi00YzNhLWI4ZjYtNjFjZTEyYjJlNDVlL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_QL75_UX190_CR0,0,190,281_.jpg"
+    },
+    {
+        
+        "Name": "Seven",
+        "Country": "USA",
+        "Duration": 127,
+        "Genre": "Crime, Drama, Mistery",
+        "Year": 1995,
+        "Actors" : "Morgan Freeman, Brad Pitt, Kevin Spacey",
+        "Director": "David Fincher",
+        "Description": "Two detectives, a rookie and a veteran, hunt a serial killer who uses the seven deadly sins as his motives.",
+        "MainPhoto": "https://m.media-amazon.com/images/M/MV5BOTUwODM5MTctZjczMi00OTk4LTg3NWUtNmVhMTAzNTNjYjcyXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg"
+    },
+    {
+        "Name": "Interstellar",
+        "Country": "USA",
+        "Duration": 169,
+        "Genre": "Adventure, Drama, Sci-Fi",
+        "Year": 2014,
+        "Actors" : "Matthew McConaughey, Anne Hathaway, Jessica Chastain",
+        "Director": "Christopher Nolan",
+        "Description": "When Earth becomes uninhabitable in the future, a farmer and ex-NASA pilot, Joseph Cooper, is tasked to pilot a spacecraft, along with a team of researchers, to find a new planet for humans.",
+        "MainPhoto": "https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg"
+    }
+]

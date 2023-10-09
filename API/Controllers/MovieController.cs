@@ -46,6 +46,7 @@ namespace API.Controllers
             }
             return BadRequest("Can not find movie");
         }
+
         [Authorize(Policy = "RequireAdminRole")]
         [HttpPost("add-movie")]
         public async Task<ActionResult> AddMovie([FromForm] AddMovieDto addMovieDto)
@@ -78,7 +79,7 @@ namespace API.Controllers
             {
                 return BadRequest("Unsuported image type");
             }
-            string imagePath = folderPath + @"\MainImage.png";
+            string imagePath = folderPath + @"\MainImage" + ext;
 
             using (FileStream stream = System.IO.File.Create(imagePath))
             {
@@ -88,10 +89,61 @@ namespace API.Controllers
             var path = imagePath.Split("wwwroot");
 
             movie.MainPhoto = path[1];
-            _movieRepository.AddMovieAsync(movie);
+            await _movieRepository.AddMovieAsync(movie);
             if (await _movieRepository.SaveAllAsync()) return Ok();
             return BadRequest("Couldn't add Movie");
 
+        }
+
+        [Authorize(Policy = "RequireAdminRole")]
+        [HttpPost("add-cover-photo/{movieId}")]
+        public async Task<ActionResult> AddCoverPhoto([FromForm] IFormFile file, int movieId)
+        {
+            var movie = await _movieRepository.GetMovie(movieId);
+            CoverPhoto coverPhoto = new CoverPhoto
+            {
+                MovieId = movie.Id,
+            };
+            var folderPath = GetFilePath(movie.Name);
+            string[] permittedExt = { ".png", ".jpg", ".jpeg" };
+            var ext = Path.GetExtension(file.FileName).ToLowerInvariant();
+            if (string.IsNullOrEmpty(ext) || !permittedExt.Contains(ext))
+            {
+                return BadRequest("Unsuported image type");
+            }
+            string imagePath = folderPath + @"\CoverImage" + ext;
+            using (FileStream stream = System.IO.File.Create(imagePath))
+            {
+                await file.CopyToAsync(stream);
+            }
+            var path = imagePath.Split("wwwroot");
+            coverPhoto.Photo = path[1];
+            movie.CoverPhoto = coverPhoto;
+            // await _movieRepository.AddCoverPhoto(coverPhoto);
+            if (await _movieRepository.SaveAllAsync())
+            {
+                return new ObjectResult(coverPhoto)
+                {
+                    StatusCode = StatusCodes.Status201Created
+                };
+            }
+            return BadRequest("Could not add Cover Photo");
+        }
+
+        [Authorize(Policy = "RequireAdminRole")]
+        [HttpPut("edit-movie/{id}")]
+        public async Task<ActionResult> EditMovie([FromBody] EditMovieDto editMovieDto, int id)
+        {
+            await _movieRepository.EditMovie(editMovieDto, id);
+            if (await _movieRepository.SaveAllAsync()) return NoContent();
+            return BadRequest("Could not update movie")
+;
+        }
+
+        [HttpGet("get-movie-images")]
+        public async Task<ActionResult<List<string>>> GetFiveMovieImages()
+        {
+            return await _movieRepository.GetFiveMovieImages();
         }
 
         [NonAction]

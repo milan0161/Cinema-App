@@ -7,12 +7,16 @@ import ProgramPage from '../pages/ProgramPage';
 import RegisterPage from '../pages/RegisterPage';
 import RootLayout from '../pages/RootLayout';
 import SingleMoviePage from '../pages/SingleMoviePage';
-import AdminDashBoardPage from '../pages/admin/AdminDashBoardPage';
+
 import AdminHallsPage from '../pages/admin/AdminHallsPage';
 import AdminMoviesPage from '../pages/admin/AdminMoviesPage';
 import AdminProjectionsPage from '../pages/admin/AdminProjectionsPage';
 import AdminRoot from '../pages/admin/AdminRoot';
 import AdminGuard from './AdminGuard';
+import ProjectionDetailsPage from '../pages/ProjectionDetailsPage';
+import AdminReservationsPage from '../pages/admin/AdminReservationsPage';
+import AdminDashboardPage from '../pages/admin/AdminDashboardPage';
+import AboutPage from '../pages/AboutPage';
 
 export const router = createBrowserRouter([
   {
@@ -40,7 +44,7 @@ export const router = createBrowserRouter([
             children: [
               {
                 index: true,
-                element: <AdminDashBoardPage />,
+                element: <AdminDashboardPage />,
               },
               {
                 path: 'movies',
@@ -50,9 +54,14 @@ export const router = createBrowserRouter([
                 path: 'projections',
                 element: <AdminProjectionsPage />,
               },
+
               {
                 path: 'halls',
                 element: <AdminHallsPage />,
+              },
+              {
+                path: 'reservations',
+                element: <AdminReservationsPage />,
               },
             ],
           },
@@ -62,6 +71,10 @@ export const router = createBrowserRouter([
       {
         path: 'program',
         element: <ProgramPage />,
+      },
+      {
+        path: 'program/projection/:id',
+        element: <ProjectionDetailsPage />,
       },
       {
         path: 'movies',
@@ -77,6 +90,10 @@ export const router = createBrowserRouter([
             element: <SingleMoviePage />,
           },
         ],
+      },
+      {
+        path: 'about',
+        element: <AboutPage />,
       },
     ],
   },

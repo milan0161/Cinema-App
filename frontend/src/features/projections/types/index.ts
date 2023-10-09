@@ -7,15 +7,43 @@ export interface Projection {
 }
 
 export interface CreateProjectionRequest {
-  id: string;
-  date: string;
+  movieId: number;
+  showingTime: string;
   hallName: string;
+  ticketPrice: number;
 }
 
 export interface CreateProjectionResponse {
   projection: Projection;
 }
 
-export interface IProjections {
-  projections: { movie: Movie; projections: Date[] }[];
+export interface IProjection {
+  id: number;
+  movie: Movie;
+  showingTime: string;
+  hall: {
+    name: string;
+  };
+  ticketPrice: number;
+}
+export interface EditProjection {
+  showingTime: string;
+  hallName: string;
+  ticketPrice: number;
+  id: number;
+}
+export interface ProjectionDetails {
+  id: number;
+  movie: Movie;
+  showingTime: string;
+  hall: {
+    name: string;
+  };
+  seats: Seat[];
+  ticketPrice: number;
+}
+export interface Seat {
+  id: number;
+  number: number;
+  available: boolean;
 }

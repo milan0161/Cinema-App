@@ -19,7 +19,7 @@ const useAdminAuth = () => {
     if (token) {
       const data = decodedAToken(token);
       dispatch(setUser({ role: data!.role, token, username: data!.email }));
-      dispatch(setIsAuth);
+      dispatch(setIsAuth(true));
       if (data?.role == 'Admin') {
         dispatch(setIsAdmin());
       }

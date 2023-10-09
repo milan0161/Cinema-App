@@ -1,5 +1,12 @@
-import { toast } from 'react-toastify';
+import * as Swall from 'sweetalert2';
 
-export const showSuccessToast = (message: string) => {
-  toast.success(message);
+export const showSuccess = (message: string): void => {
+  const Toast = Swall.default.mixin({
+    position: 'top',
+    showConfirmButton: true,
+  });
+  Toast.fire({
+    icon: 'success',
+    title: message,
+  });
 };

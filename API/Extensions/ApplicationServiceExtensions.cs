@@ -20,6 +20,9 @@ namespace API.Helpers
             services.AddScoped<ITokenProvider, TokenProvider>();
             services.AddScoped<IMovieRepository, MovieRepository>();
             services.AddScoped<IProjectionRepository, ProjectionRepository>();
+            services.AddScoped<IReservationRepository, ReservationRepository>();
+            services.AddScoped<IAdminRepository, AdminRepository>();
+            services.AddScoped<IHallRepository, HallRepository>();
             return services;
         }
     }

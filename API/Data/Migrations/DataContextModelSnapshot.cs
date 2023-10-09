@@ -129,6 +129,29 @@ namespace API.Data.Migrations
                     b.ToTable("Projections");
                 });
 
+            modelBuilder.Entity("API.Entities.Reservation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ProjectionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProjectionId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Reservations");
+                });
+
             modelBuilder.Entity("API.Entities.Role", b =>
                 {
                     b.Property<int>("Id")
@@ -170,15 +193,20 @@ namespace API.Data.Migrations
                     b.Property<bool>("Available")
                         .HasColumnType("bit");
 
-                    b.Property<int>("HallId")
+                    b.Property<int>("Number")
                         .HasColumnType("int");
 
-                    b.Property<int>("Number")
+                    b.Property<int>("ProjectionId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ReservationId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("HallId");
+                    b.HasIndex("ProjectionId");
+
+                    b.HasIndex("ReservationId");
 
                     b.ToTable("Seats");
                 });
@@ -387,15 +415,41 @@ namespace API.Data.Migrations
                     b.Navigation("Movie");
                 });
 
-            modelBuilder.Entity("API.Entities.Seat", b =>
+            modelBuilder.Entity("API.Entities.Reservation", b =>
                 {
-                    b.HasOne("API.Entities.Hall", "Hall")
-                        .WithMany("Seats")
-                        .HasForeignKey("HallId")
+                    b.HasOne("API.Entities.Projection", "Projection")
+                        .WithMany("Reservations")
+                        .HasForeignKey("ProjectionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Hall");
+                    b.HasOne("API.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Projection");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("API.Entities.Seat", b =>
+                {
+                    b.HasOne("API.Entities.Projection", "Projection")
+                        .WithMany("Seats")
+                        .HasForeignKey("ProjectionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("API.Entities.Reservation", "Reservation")
+                        .WithMany("Seats")
+                        .HasForeignKey("ReservationId")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.Navigation("Projection");
+
+                    b.Navigation("Reservation");
                 });
 
             modelBuilder.Entity("API.Entities.UserRole", b =>
@@ -456,8 +510,6 @@ namespace API.Data.Migrations
             modelBuilder.Entity("API.Entities.Hall", b =>
                 {
                     b.Navigation("Projections");
-
-                    b.Navigation("Seats");
                 });
 
             modelBuilder.Entity("API.Entities.Movie", b =>
@@ -465,6 +517,18 @@ namespace API.Data.Migrations
                     b.Navigation("CoverPhoto");
 
                     b.Navigation("Projections");
+                });
+
+            modelBuilder.Entity("API.Entities.Projection", b =>
+                {
+                    b.Navigation("Reservations");
+
+                    b.Navigation("Seats");
+                });
+
+            modelBuilder.Entity("API.Entities.Reservation", b =>
+                {
+                    b.Navigation("Seats");
                 });
 
             modelBuilder.Entity("API.Entities.Role", b =>

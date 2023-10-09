@@ -5,17 +5,20 @@ import AddMovieForm from '../../../common/components/form/AddMovieForm';
 import MoviesList from '../../../features/movies/data/AdminMoviesList';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAdd } from '@fortawesome/free-solid-svg-icons';
+import { AnimatePresence } from 'framer-motion';
 
 const AdminMoviesPage = () => {
   const [isAddingMovie, setIsAddingMovie] = useState<boolean>(false);
+
   const addMovieHandle = () => {
     setIsAddingMovie(true);
   };
   const cancelHandler = () => {
     setIsAddingMovie(false);
   };
+
   return (
-    <div className="w-full  h-[75vh] overflow-y-scroll px-2">
+    <div className="w-full overflow-y-scroll px-2">
       <div className="grid grid-cols-10 border-b-2">
         <h2 className="ml-24 text-center p-2 text-2xl font-bold col-start-1 col-end-10">
           Movie List
@@ -33,7 +36,9 @@ const AdminMoviesPage = () => {
       </div>
       {!isAddingMovie && <AdminSearchBar />}
       {!isAddingMovie && <MoviesList />}
-      {isAddingMovie && <AddMovieForm cancelHandler={cancelHandler} />}
+      <AnimatePresence>
+        {isAddingMovie && <AddMovieForm cancelHandler={cancelHandler} />}
+      </AnimatePresence>
     </div>
   );
 };

@@ -10,6 +10,6 @@ namespace API.Entities
         public int Id { get; set; }
         public string Name { get; set; }
         public IEnumerable<Projection> Projections { get; set; }
-        public IEnumerable<Seat> Seats { get; set; }
+
     }
 }

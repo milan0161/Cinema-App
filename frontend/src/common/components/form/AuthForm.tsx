@@ -1,6 +1,5 @@
 import { Link, useSearchParams } from 'react-router-dom';
 import { useRegisterMutation } from '../../../features/auth-module/api/authApi';
-import { useEffect } from 'react';
 import { decodedAToken } from '../../../app/utils/decodeToken';
 import { saveToken } from '../../../app/utils/saveToken';
 import { useAppDispatch } from '../../../app/store/store';
@@ -8,9 +7,12 @@ import { setUser } from '../../../features/auth-module/authSlice';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { ReqRegister } from '../../../features/auth-module/types';
-import { showSuccessToast } from '../../../app/utils/ToastMsg';
+import { useState } from 'react';
+import LoadingIndicator from '../ui/LoadingIndicator';
 
 const AuthForm = () => {
+  const [error, setError] = useState<string | null>(null);
+
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -21,33 +23,34 @@ const AuthForm = () => {
 
   const { register, handleSubmit, reset, formState } = useForm<ReqRegister>();
   const { errors } = formState;
-  const authHandler = (data: ReqRegister) => {
-    registerUser([
-      {
-        password: data.password,
-        email: data.email,
-        username: data.username,
-      },
-      `${isLogin ? 'login' : 'register'}`,
-    ])
-      .unwrap()
-      .then((data) => {
-        const user = decodedAToken(data.token);
-        saveToken(data.token, user!.exp);
-        dispatch(
-          setUser({
-            role: user!.role,
-            username: user!.email,
-            token: data.token,
-          }),
-        );
-        reset();
-        navigate('/');
-      })
-      .catch((err) => console.log(err));
+
+  const authHandler = async (data: ReqRegister) => {
+    try {
+      const response = await registerUser([
+        {
+          password: data.password,
+          email: data.email,
+          username: data.username,
+        },
+        `${isLogin ? 'login' : 'register'}`,
+      ]).unwrap();
+      const user = decodedAToken(response.token);
+      saveToken(response.token, user!.exp);
+      dispatch(
+        setUser({
+          role: user!.role,
+          username: user!.email,
+          token: response.token,
+        }),
+      );
+      reset();
+      navigate('/');
+    } catch (error: any) {
+      setError(error);
+    }
   };
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <LoadingIndicator />;
   }
 
   return (
@@ -111,6 +114,9 @@ const AuthForm = () => {
         {errors.email && (
           <p className="validation_error">{errors.email?.message}</p>
         )}
+        {error && error.includes('email') && (
+          <p className="text-center text-red-600">{error}</p>
+        )}
       </div>
       <div className="flex flex-col">
         <label htmlFor="login_password">Password:</label>
@@ -139,6 +145,9 @@ const AuthForm = () => {
         />
         {errors.password && (
           <p className="validation_error">{errors.password?.message}</p>
+        )}
+        {error && error.startsWith('Password') && (
+          <p className="text-center text-red-600">{error}</p>
         )}
       </div>
       <div className="flex items-center justify-center">
