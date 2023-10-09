@@ -1,43 +1,83 @@
-import React from 'react';
-import { Movie } from '../../movies/types';
+import { IProjection } from '../types';
+import { publicUrl } from '../../../api/axios';
+import { useNavigate } from 'react-router-dom';
 
-interface SingleProjProps {
-  projection: { movie: Movie; projections: Date[] };
-}
+type SingleProjectionProps = {
+  projection: IProjection;
+};
 
-const SingleProjection = ({ projection }: SingleProjProps): React.JSX.Element => {
-  const publicUrl = import.meta.env.VITE_REACT_APP_BASE_PUBLIC_URL;
+const SingleProjection = ({ projection }: SingleProjectionProps) => {
+  const navigate = useNavigate();
+  const reserveTicketHandler = (): void => {
+    navigate(`/program/projection/${projection.id}`);
+  };
+
+  let movieImage = projection.movie.mainPhoto.startsWith('public')
+    ? `${publicUrl}/${projection.movie.mainPhoto}`
+    : `${projection.movie.mainPhoto}`;
+
   return (
-    <li className="border border-slate-300 rounded w-[500px] h-[350px] p-2 mt-4">
-      <h2 className="text-center">{projection.movie.title}</h2>
-      <div className="flex flex-row gap-4 my-2">
-        <div className="w-[150px] h-[200px]">
-          <img className="w-full h-full" src={`${publicUrl}${projection.movie.image}`} alt={projection.movie.title} />
+    <li className="border border-slate-300 w-1/3 flex flex-col items-center max-w-[450px] rounded">
+      <div className="flex flex-row gap-x-5 ">
+        <div className="w-1/2">
+          <img className="w-full h-full" src={movieImage} />
         </div>
-        <div className="flex flex-col gap-2 justify-center">
-          <p>
-            <span className="span_bold">Year:</span> {projection.movie.year}
-          </p>
-          <p>
-            <span className="span_bold">Genre:</span> {projection.movie.genre}
-          </p>
-          <p>
-            <span className="span_bold">Actors:</span>
-            {projection.movie.actors}
-          </p>
-          <p>
-            <span className="span_bold">Director:</span>
-            {projection.movie.director}
-          </p>
-        </div>
-      </div>
-      <div className=" mt-4 flex flex-row gap-x-4">
-        {projection.projections.map((p, i) => (
-          <div className="border border-slate-300 w-16 text-center" key={i}>
-            {new Date(p).toLocaleTimeString('fr-Fr', { minute: '2-digit', hour: '2-digit' })}h
+        <div className="py-5 w-1/2">
+          <div className="">
+            <p>
+              <strong className="mr-[5px]">Director</strong>
+              {projection.movie.director}
+            </p>
+            <p>
+              <strong className="mr-[5px]">Name</strong>
+              {projection.movie.name}
+            </p>
+            <p>
+              <strong className="mr-[5px]">Actors</strong>
+              {projection.movie.actors}
+            </p>
+            <p>
+              <strong className="mr-[5px]">Country</strong>
+              {projection.movie.country}
+            </p>
+            <p>
+              <strong className="mr-[5px]">Year</strong>
+              {projection.movie.year}
+            </p>
+            <p>
+              <strong className="mr-[5px]">Genre</strong>
+              {projection.movie.genre}
+            </p>
+            <p>
+              <strong className="mr-[5px]">Duration</strong>
+              {projection.movie.duration}min
+            </p>
           </div>
-        ))}
+          <div className="mt-10">
+            <div>
+              <strong className="mr-[5px]">Showing Time:</strong>
+              <p>
+                {' '}
+                {new Date(projection.showingTime).toLocaleDateString('fr-Fr', {
+                  hour: '2-digit',
+                  minute: '2-digit',
+                })}
+              </p>
+            </div>
+            <p>
+              <strong className="mr-[5px]">Hall:</strong>
+              {projection.hall.name}
+            </p>
+          </div>
+        </div>
       </div>
+      <button
+        type="button"
+        onClick={reserveTicketHandler}
+        className="w-[80%] border border-slate-300 my-2 text-lg rounded hover:scale-110 duration-150"
+      >
+        Reserve Ticket
+      </button>
     </li>
   );
 };

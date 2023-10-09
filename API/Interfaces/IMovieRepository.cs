@@ -9,8 +9,11 @@ namespace API.Interfaces
         Task<List<MovieDto>> GetMovies();
         Task<MovieDetailsDto> GetMovieById(int id);
         Task<MovieDetailsDto> GetMovieByName(string name);
-        void AddMovieAsync(Movie movie);
-        public Task<bool> MovieExsist(string movieName, int movieLength);
+        Task AddMovieAsync(Movie movie);
+        Task<bool> MovieExsist(string movieName, int movieLength);
+        Task EditMovie(EditMovieDto editMovieDto, int movieId);
+        Task<Movie> GetMovie(int id);
+        Task<List<string>> GetFiveMovieImages();
         Task<bool> SaveAllAsync();
     }
 }

@@ -42,6 +42,7 @@ try
     await context.Database.MigrateAsync();
     await Seed.SeedUsers(userManager, roleManager);
     await SeedProjections.AddProjections(context);
+    await Seed.SeedMovies(context);
 }
 catch (Exception ex)
 {

@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from '../store/store';
 import { getAToken } from '../utils/saveToken';
 import { decodedAToken } from '../utils/decodeToken';
 import { setIsAuth, setUser } from '../../features/auth-module/authSlice';
-import { ToastContainer } from 'react-toastify';
+import Footer from '../../common/components/footer/Footer';
 
 const RootLayout = () => {
   const dispatch = useAppDispatch();
@@ -26,10 +26,10 @@ const RootLayout = () => {
   }, []);
 
   return (
-    <div className="">
+    <div className="w-[80%] mx-auto">
       <Header />
       <Outlet />
-      <ToastContainer />
+      <Footer />
     </div>
   );
 };

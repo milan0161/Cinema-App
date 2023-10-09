@@ -1,45 +1,55 @@
 import { useState } from 'react';
-import ProjectionsList from '../../../features/projections/data/ProjectionsList';
+import AdminProjections from '../../../features/admin/data/AdminProjections';
+import EditProjectionForm from '../../../common/components/form/EditProjectionForm';
+import { IProjection } from '../../../features/projections/types';
+import ProjectionDatePagination from '../../../features/projections/data/ProjectionDatePagination';
 
 const AdminProjectionsPage = () => {
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  const [date, setDate] = useState<Date>(today);
-  let tomorow = new Date(date);
-  console.log(date);
-  tomorow.setDate(tomorow.getDate() + 1);
-  let yesterday = new Date(date);
-  yesterday.setDate(yesterday.getDate() - 1);
+  const [isEdit, setIsEdit] = useState(false);
+  const [projectionData, setProjectionData] = useState<IProjection | null>(
+    null,
+  );
+  const [date, setDate] = useState<string>(
+    new Date(Date.now()).toISOString().substring(0, 10),
+  );
 
-  const nextDayHandler = () => {
+  const prevDay = () => {
     setDate((prev) => {
-      //nadji nacin da updejtujes state
-      return prev;
+      return new Date(new Date(prev).getTime() - 60 * 60 * 24 * 1000)
+        .toISOString()
+        .substring(0, 10);
     });
   };
-  const previusDayHandler = () => {
+
+  const nextDay = () => {
     setDate((prev) => {
-      const noviDate = prev.setDate(prev.getDate() - 1);
-      return new Date(noviDate);
+      return new Date(new Date(prev).getTime() + 60 * 60 * 24 * 1000)
+        .toISOString()
+        .substring(0, 10);
     });
   };
+
+  const showEditHandler = (showing: boolean, projection: IProjection) => {
+    setIsEdit(showing);
+    setProjectionData(projection);
+  };
+
   return (
-    <div className="w-full h-[75vh] flex flex-col">
-      <div className="flex flex-row gap-x-2 px-2">
-        <button onClick={previusDayHandler}>
-          {yesterday.toLocaleDateString()}
-        </button>
-        <button className="border border-slate-300 p-2 font-bold">
-          {date.toLocaleDateString()}
-        </button>
-        <button onClick={nextDayHandler} className="">
-          {tomorow.toLocaleDateString()}
-        </button>
-      </div>
-      <div className="overflow-auto">
-        <ProjectionsList date={date} />
-      </div>
-    </div>
+    <section className="w-full">
+      {!isEdit && (
+        <div className="flex gap-x-2 justify-center items-center p-2">
+          <ProjectionDatePagination
+            date={date}
+            setTomorow={nextDay}
+            setYesterday={prevDay}
+          />
+        </div>
+      )}
+      {!isEdit && <AdminProjections showEdit={showEditHandler} date={date} />}
+      {isEdit && (
+        <EditProjectionForm showEdit={setIsEdit} projection={projectionData} />
+      )}
+    </section>
   );
 };
 

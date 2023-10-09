@@ -16,6 +16,7 @@ namespace API.Data
         public DbSet<Projection> Projections { get; set; }
         public DbSet<Hall> Halls { get; set; }
         public DbSet<Seat> Seats { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -64,18 +65,39 @@ namespace API.Data
 
 
 
-            builder.Entity<Hall>()
+            builder.Entity<Projection>()
                 .HasMany(h => h.Seats)
-                .WithOne(h => h.Hall)
-                .HasForeignKey(s => s.HallId)
+                .WithOne(h => h.Projection)
+                .HasForeignKey(s => s.ProjectionId)
                 .OnDelete(DeleteBehavior.Cascade);
 
+            builder.Entity<Projection>()
+                .HasMany(h => h.Reservations)
+                .WithOne(h => h.Projection)
+                .HasForeignKey(p => p.ProjectionId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<Reservation>()
+                .HasMany(s => s.Seats)
+                .WithOne(r => r.Reservation)
+                .HasForeignKey(s => s.ReservationId)
+                .OnDelete(DeleteBehavior.NoAction)
+                .IsRequired(false);
+
+            builder.Entity<Seat>()
+                .HasOne(s => s.Reservation)
+                .WithMany(s => s.Seats)
+                .HasForeignKey(s => s.ReservationId)
+                .IsRequired(false)
+                .OnDelete(DeleteBehavior.NoAction);
             // builder.Entity<Seat>()
             //     .HasOne(s => s.Hall)
             //     .WithMany(h => h.Seats)
             //     .HasForeignKey(s => s.HallId)
             //     .IsRequired();
+
         }
+
 
 
     }

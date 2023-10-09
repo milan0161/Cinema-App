@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useAppSelector } from '../../../app/store/store';
+import React from 'react';
+import { useAppDispatch, useAppSelector } from '../../../app/store/store';
 import Logo from '../../../assets/CinemaIcon.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -7,13 +7,36 @@ import {
   faInstagram,
   faFacebookSquare,
 } from '@fortawesome/free-brands-svg-icons';
-import { Link } from 'react-router-dom';
-import AccountMenu from './AccountMenu';
+import { Link, useNavigate } from 'react-router-dom';
 import MainNav from '../navigation/MainNav';
+import DropMenu from '../navigation/DropMenu';
+import DropMenuItem from '../navigation/DropMenuItem';
+import { logout } from '../../../features/auth-module/authSlice';
+import { removeToken } from '../../../app/utils/saveToken';
 
 const Header = (): React.JSX.Element => {
   const userState = useAppSelector((state) => state.auth);
-  const [isVisible, setIsVisible] = useState<boolean>(false);
+
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const loginHandler = () => {
+    navigate('auth?mode=login');
+    setAnchorEl(null);
+  };
+
+  const logoutHandler = () => {
+    dispatch(logout());
+    removeToken();
+    navigate('/');
+    setAnchorEl(null);
+  };
+
+  const adminHandler = () => {
+    navigate('admin');
+    setAnchorEl(null);
+  };
 
   return (
     <header className="flex flex-col px-10">
@@ -33,29 +56,21 @@ const Header = (): React.JSX.Element => {
             <FontAwesomeIcon className="h-6 text-white" icon={faInstagram} />
           </a>
         </div>
-        <div className="flex flex-row gap-2">
+        <DropMenu
+          anchorEl={anchorEl}
+          setAnchorEl={setAnchorEl}
+          text={userState.isAuth ? userState.username : 'Account'}
+        >
           {!userState.isAuth && (
-            <Link className="login_reg_btn text-white" to={'auth?mode=login'}>
-              Account
-            </Link>
+            <DropMenuItem text="Login" handleClose={loginHandler} />
+          )}
+          {userState.isAdmin && (
+            <DropMenuItem text="Admin Panel" handleClose={adminHandler} />
           )}
           {userState.isAuth && (
-            <button
-              onClick={() => {
-                setIsVisible((prev) => !prev);
-              }}
-              className="login_reg_btn no-underline"
-            >
-              {userState.username}
-            </button>
+            <DropMenuItem text="Logout" handleClose={logoutHandler} />
           )}
-          {isVisible && (
-            <AccountMenu
-              setIsVisible={setIsVisible}
-              isAdmin={userState.isAdmin}
-            />
-          )}
-        </div>
+        </DropMenu>
       </div>
       <div className=" flex flex-row w-96 items-center justify-center gap-5 py-4">
         <Link

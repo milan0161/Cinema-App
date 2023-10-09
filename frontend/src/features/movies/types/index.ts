@@ -1,5 +1,5 @@
 export interface Movie {
-  id: string;
+  id: number;
   name: string;
   country: string;
   actors: string;
@@ -20,6 +20,18 @@ export interface AddMovieFormValue {
   director: string;
   genre: string;
   mainPhoto: File;
+  year: number;
+  duration: number;
+}
+
+export interface EditMovie {
+  id: number;
+  name: string;
+  country: string;
+  actors: string;
+  description: string;
+  director: string;
+  genre: string;
   year: number;
   duration: number;
 }

@@ -1,9 +1,10 @@
-import { Navigate, Outlet } from 'react-router-dom';
+import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import useAdminAuth from '../hooks/useAdminAuth';
 
 const AdminGuard = () => {
   const isAdmin = useAdminAuth();
-  if (!isAdmin) return <Navigate to={'/'} />;
+  const location = useLocation();
+  if (!isAdmin) return <Navigate to={'/'} state={{ from: location }} replace />;
   return <Outlet />;
 };
 

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "9DD9AHnK6qtJPVmNYeG1eKTi85dYfLE9usErxyoCfbY=",
+  "Hash": "LRjUcyfRdyyChqeaRncn04rOMA8R6NUPN73ZYp4Sh4s=",
   "Source": "API",
   "BasePath": "_content/API",
   "Mode": "Default",
@@ -15,91 +15,5 @@
       "Pattern": "**"
     }
   ],
-  "Assets": [
-    {
-      "Identity": "D:\\Milan Programiranje\\Cinema Project\\API\\wwwroot\\Uploads\\Movies\\Dune\\MainImage.png",
-      "SourceId": "API",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\Milan Programiranje\\Cinema Project\\API\\wwwroot\\",
-      "BasePath": "_content/API",
-      "RelativePath": "Uploads/Movies/Dune/MainImage.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Uploads\\Movies\\Dune\\MainImage.png"
-    },
-    {
-      "Identity": "D:\\Milan Programiranje\\Cinema Project\\API\\wwwroot\\Uploads\\Movies\\Fast X\\MainImage.png",
-      "SourceId": "API",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\Milan Programiranje\\Cinema Project\\API\\wwwroot\\",
-      "BasePath": "_content/API",
-      "RelativePath": "Uploads/Movies/Fast X/MainImage.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Uploads\\Movies\\Fast X\\MainImage.png"
-    },
-    {
-      "Identity": "D:\\Milan Programiranje\\Cinema Project\\API\\wwwroot\\Uploads\\Movies\\Spider-Man Across the Spider-Verse\\MainImage.png",
-      "SourceId": "API",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\Milan Programiranje\\Cinema Project\\API\\wwwroot\\",
-      "BasePath": "_content/API",
-      "RelativePath": "Uploads/Movies/Spider-Man Across the Spider-Verse/MainImage.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Uploads\\Movies\\Spider-Man Across the Spider-Verse\\MainImage.png"
-    },
-    {
-      "Identity": "D:\\Milan Programiranje\\Cinema Project\\API\\wwwroot\\Uploads\\Movies\\teast\\MainImage.png",
-      "SourceId": "API",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\Milan Programiranje\\Cinema Project\\API\\wwwroot\\",
-      "BasePath": "_content/API",
-      "RelativePath": "Uploads/Movies/teast/MainImage.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Uploads\\Movies\\teast\\MainImage.png"
-    },
-    {
-      "Identity": "D:\\Milan Programiranje\\Cinema Project\\API\\wwwroot\\Uploads\\Movies\\The Godfather\\MainImage.png",
-      "SourceId": "API",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\Milan Programiranje\\Cinema Project\\API\\wwwroot\\",
-      "BasePath": "_content/API",
-      "RelativePath": "Uploads/Movies/The Godfather/MainImage.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Uploads\\Movies\\The Godfather\\MainImage.png"
-    }
-  ]
+  "Assets": []
 }

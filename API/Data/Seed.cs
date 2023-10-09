@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text.Json;
-using System.Threading.Tasks;
 using API.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -39,6 +35,22 @@ namespace API.Data
             };
             await userManager.CreateAsync(admin, "admin123");
             await userManager.AddToRoleAsync(admin, "Admin");
+        }
+
+        public static async Task SeedMovies(DataContext context)
+        {
+            if (await context.Movies.AnyAsync()) return;
+
+            var moviesData = await File.ReadAllTextAsync(@"Data/MovieSeedData.json");
+
+            var movies = JsonSerializer.Deserialize<List<Movie>>(moviesData);
+
+            foreach (Movie movie in movies)
+            {
+                context.Movies.Add(movie);
+            }
+
+            await context.SaveChangesAsync();
         }
     }
 }

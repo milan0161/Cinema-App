@@ -18,25 +18,25 @@ namespace API.Controllers
             this._projectionRepository = projectionRepository;
 
         }
+
+
         [Authorize(Policy = "RequireAdminRole")]
         [HttpPost("add-new-projection")]
         public async Task<ActionResult<Projection>> AddNewProjection(AddProjectionDto addProjectionDto)
         {
-            var projection = new Projection
-            {
-                MovieId = addProjectionDto.MovieId,
-                HallId = addProjectionDto.HallId,
-                ShowingTime = addProjectionDto.ShowingTime.ToUniversalTime(),
-                TicketPrice = addProjectionDto.TicketPrice
-            };
-            await _projectionRepository.AddProjectionAsync(projection);
+
+            var projection = await _projectionRepository.AddProjectionAsync(addProjectionDto);
             if (!await _projectionRepository.SaveAllAsync())
             {
                 return BadRequest("Could not add Projection");
             }
-            return Ok();
+            return new ObjectResult(new { id = projection.Id, showingTime = projection.ShowingTime, ticketPrice = projection.TicketPrice })
+            {
+                StatusCode = StatusCodes.Status201Created
+            };
 
         }
+
         [HttpGet("get-projections")]
         public async Task<ActionResult<List<ProjectionDto>>> GetAllProjections()
         {
@@ -45,8 +45,16 @@ namespace API.Controllers
             return Ok(projections);
 
         }
+
+        [HttpGet("get-new")]
+        public async Task<ActionResult<List<ProjectionDto>>> GetNewProjectionsAsync()
+        {
+            var projections = await _projectionRepository.GetNewProjections();
+            return projections;
+        }
+
         [HttpGet("get-single-projection/{id}")]
-        public async Task<ActionResult<ProjectionDto>> GetSingleProjection(int id)
+        public async Task<ActionResult<ProjectionDetailsDto>> GetSingleProjection(int id)
         {
             var projection = await _projectionRepository.GetProjectionAsync(id);
             if (projection is null) return NotFound("Could not find projection");
@@ -59,17 +67,28 @@ namespace API.Controllers
             if (projection.Count == 0) return NotFound("Could not find any projection in this hall");
             return Ok(projection);
         }
-        [HttpGet("get-projections-by-date/{date}")]
-        public async Task<ActionResult<List<ProjectionDto>>> GetProjectionsByDate(DateOnly date)
+        [HttpGet("get-projections-by-date")]
+        public async Task<ActionResult<List<ProjectionDto>>> GetProjectionsByDate([FromQuery] string date)
         {
             var projections = await _projectionRepository.GetProjectionsByDateAsync(date);
             return Ok(projections);
         }
-        [HttpPut("edit-projection/{id}")]
+
+        [Authorize(Policy = "RequireAdminRole")]
+        [HttpPatch("edit-projection/{id}")]
         public async Task<ActionResult<ProjectionDto>> EditProjection([FromBody] AddProjectionDto addProjectionDto, int id)
         {
             var projection = await _projectionRepository.EditProjectionAsync(addProjectionDto, id);
             return Ok(projection);
         }
+
+        [Authorize(Policy = "RequireAdminRole")]
+        [HttpDelete("delete-projection/{id}")]
+        public async Task<ActionResult> DeleteProjection(int id)
+        {
+            await _projectionRepository.RemoveProjectionAsync(id);
+            return Ok();
+        }
+
     }
 }
