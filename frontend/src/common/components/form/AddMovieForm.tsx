@@ -10,11 +10,14 @@ type AddMovieFormProps = {
 
 const AddMovieForm = ({ cancelHandler }: AddMovieFormProps) => {
   const formRef = useRef<HTMLFormElement>(null);
-  const [addMovie, { isError, error, isSuccess }] = useAddMovieMutation();
+
+  const [addMovie, { isError, error }] = useAddMovieMutation();
+
   const { register, formState, reset } = useForm<AddMovieFormValue>({
     mode: 'onBlur',
   });
   const { errors, isValid } = formState;
+
   const addMovieHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 

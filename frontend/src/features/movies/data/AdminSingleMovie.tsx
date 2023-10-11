@@ -6,13 +6,17 @@ import DropMenu from '../../../common/components/navigation/DropMenu';
 import DropMenuItem from '../../../common/components/navigation/DropMenuItem';
 import { useNavigate } from 'react-router-dom';
 import Modal from '../../../common/components/ui/Modal';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import EditMovieForm from '../../../common/components/form/EditMovieForm';
 
 type SingleMovieProps = {
   movie: Movie;
+  i: number;
 };
-const AdminSingleMovie = ({ movie }: SingleMovieProps): React.JSX.Element => {
+const AdminSingleMovie = ({
+  movie,
+  i,
+}: SingleMovieProps): React.JSX.Element => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isEdit, setIsEdit] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -35,14 +39,14 @@ const AdminSingleMovie = ({ movie }: SingleMovieProps): React.JSX.Element => {
   };
 
   return (
-    <div className="border border-slate-300 rounded relative">
-      <div className="text-right absolute right-1 z-10">
-        <DropMenu
-          className="text-green-500"
-          anchorEl={anchorEl}
-          setAnchorEl={setAnchorEl}
-          text="Options"
-        >
+    <motion.div
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.3, delay: i * 0.03 }}
+      className="border border-slate-300 rounded relative"
+    >
+      <div className="text-right absolute right-1 z-10 top-1">
+        <DropMenu anchorEl={anchorEl} setAnchorEl={setAnchorEl} text="Options">
           <DropMenuItem text="Edit Movie" handleClose={isEditHandler} />
           <DropMenuItem text="See Details" handleClose={detailsHandler} />
           <DropMenuItem
@@ -51,7 +55,7 @@ const AdminSingleMovie = ({ movie }: SingleMovieProps): React.JSX.Element => {
           />
         </DropMenu>
       </div>
-      <SingleMovie movie={movie} showHover={false} />
+      <SingleMovie i={i} movie={movie} showHover={false} />
       <AnimatePresence>
         {isOpen && !isEdit && (
           <Modal onClickBackdrop={() => setIsOpen(false)} className="">
@@ -72,8 +76,7 @@ const AdminSingleMovie = ({ movie }: SingleMovieProps): React.JSX.Element => {
           </Modal>
         )}
       </AnimatePresence>
-    </div>
+    </motion.div>
   );
 };
-
 export default AdminSingleMovie;

@@ -18,7 +18,7 @@ const SingleProjection = ({ projection }: SingleProjectionProps) => {
 
   return (
     <li className="border border-slate-300 w-1/3 flex flex-col items-center max-w-[450px] rounded">
-      <div className="flex flex-row gap-x-5 ">
+      <div className="flex flex-row gap-x-5 h-5/6">
         <div className="w-1/2">
           <img className="w-full h-full" src={movieImage} />
         </div>
@@ -71,13 +71,15 @@ const SingleProjection = ({ projection }: SingleProjectionProps) => {
           </div>
         </div>
       </div>
-      <button
-        type="button"
-        onClick={reserveTicketHandler}
-        className="w-[80%] border border-slate-300 my-2 text-lg rounded hover:scale-110 duration-150"
-      >
-        Reserve Ticket
-      </button>
+      <div className="w-full flex items-center justify-center h-1/6">
+        <button
+          type="button"
+          onClick={reserveTicketHandler}
+          className="w-[80%] border border-slate-300 my-2 text-lg rounded hover:scale-110 duration-150"
+        >
+          Reserve Ticket
+        </button>
+      </div>
     </li>
   );
 };

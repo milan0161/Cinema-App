@@ -27,7 +27,7 @@ export default function DropMenu({
   };
 
   return (
-    <div>
+    <div className="bg-black/90 rounded">
       <Button
         id="basic-button"
         aria-controls={open ? 'basic-menu' : undefined}

@@ -1,6 +1,18 @@
 import { createEntityAdapter, createSelector } from '@reduxjs/toolkit';
 import { apiSlice } from '../../../app/api/apiSlice';
-import { EditMovie, Images, Movie } from '../types';
+import {
+  EditMovie,
+  Images,
+  Movie,
+  PaginationResponse,
+  SearchMovies,
+} from '../types';
+
+const initialSearchTerm: SearchMovies = {
+  searchTerm: '',
+  pageSize: 10,
+  pageNumber: 1,
+};
 
 const movieAdapter = createEntityAdapter<Movie>({
   selectId: (movie) => movie.id,
@@ -19,18 +31,27 @@ const movieApi = apiSlice.injectEndpoints({
       }),
       invalidatesTags: [{ type: 'MOVIES', id: 'LIST' }],
     }),
-    getMovies: builder.query<Movie[], void>({
-      query: () => ({
+    getMovies: builder.query<PaginationResponse<Movie[]>, SearchMovies | void>({
+      query: ({
+        searchTerm,
+        pageNumber,
+        pageSize,
+      }: SearchMovies = initialSearchTerm) => ({
         url: 'movie',
+        params: { searchTerm: searchTerm, pageSize, pageNumber },
         method: 'GET',
         transformResponse: (responseData) => {
+          console.log(responseData);
           return movieAdapter.setAll(initialState, responseData);
         },
       }),
-      providesTags: (result) =>
-        result
+      providesTags: (response) =>
+        response?.data
           ? [
-              ...result.map(({ id }) => ({ type: 'MOVIES' as const, id })),
+              ...response.data.map(({ id }) => ({
+                type: 'MOVIES' as const,
+                id,
+              })),
               { type: 'MOVIES', id: 'LIST' },
             ]
           : [{ type: 'MOVIES', id: 'LIST' }],
@@ -71,13 +92,15 @@ export const {
   useEditMovieMutation,
   useGetFiveMovieImagesQuery,
 } = movieApi;
+//Vrati se posle da sredis ovo s paginaciju
+// const selectMovieResult = movieApi.endpoints.getMovies.select({
+//   searchTerm: '',
+// });
 
-const selectMovieResult = movieApi.endpoints.getMovies.select();
-
-export const selectMovieData = createSelector(
-  selectMovieResult,
-  (movieResult) => movieResult.data,
-);
+// export const selectMovieData = createSelector(
+//   selectMovieResult,
+//   (movieResult) => movieResult.data,
+// );
 
 // export const { selectAll: selectAllMovies } = movieAdapter.getSelectors(
 //   (state) => selectMovieData(state) ?? initialState,

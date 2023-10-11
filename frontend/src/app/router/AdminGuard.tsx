@@ -1,10 +1,21 @@
-import { Navigate, Outlet, useLocation } from 'react-router-dom';
-import useAdminAuth from '../hooks/useAdminAuth';
+import { Outlet, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { getAToken } from '../utils/saveToken';
+import { decodedAToken } from '../utils/decodeToken';
 
 const AdminGuard = () => {
-  const isAdmin = useAdminAuth();
-  const location = useLocation();
-  if (!isAdmin) return <Navigate to={'/'} state={{ from: location }} replace />;
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = getAToken();
+    if (token) {
+      const data = decodedAToken(token);
+      if (data?.role !== 'Admin') {
+        navigate('/');
+      }
+    }
+  }, []);
+
   return <Outlet />;
 };
 

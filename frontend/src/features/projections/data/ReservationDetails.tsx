@@ -28,7 +28,7 @@ const ReservationDetails = ({
 
   const reservationHandler = () => {
     if (!isLoggedIn) {
-      navigate('/auth?mode=login');
+      return navigate('/auth?mode=login');
     }
 
     addReservation({

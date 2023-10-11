@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { ReqRegister } from '../../../features/auth-module/types';
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import LoadingIndicator from '../ui/LoadingIndicator';
 
 const AuthForm = () => {
@@ -54,7 +55,10 @@ const AuthForm = () => {
   }
 
   return (
-    <form
+    <motion.form
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 30 }}
       onSubmit={handleSubmit(authHandler)}
       className=" text-slate-950 bg-white w-1/2 2xl:w-1/4 m-auto mt-20 flex flex-col gap-4 p-4 rounded"
       noValidate
@@ -168,7 +172,7 @@ const AuthForm = () => {
           </Link>
         </p>
       </div>
-    </form>
+    </motion.form>
   );
 };
 

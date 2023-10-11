@@ -1,13 +1,15 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { Movie } from '../types';
 const publicUrl = import.meta.env.VITE_REACT_APP_BASE_PUBLIC_URL;
 
 type SingleMovieProps = {
   movie: Movie;
+  i: number;
 
   showHover: boolean;
 };
-const SingleMovie = ({ movie, showHover }: SingleMovieProps) => {
+const SingleMovie = ({ movie, showHover, i }: SingleMovieProps) => {
   let movieImage = movie.mainPhoto?.startsWith('public')
     ? `${publicUrl}/${movie.mainPhoto}`
     : `${movie.mainPhoto}`;
@@ -16,7 +18,12 @@ const SingleMovie = ({ movie, showHover }: SingleMovieProps) => {
     navigate(`${movie.id}`);
   };
   return (
-    <li className="w-full h-[350px] relative col-span-1 single_movie border border-slate-400 flex  justify-center transition duration-300">
+    <motion.li
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.03, delay: i * 0.03 }}
+      className="w-full h-[350px] relative col-span-1 single_movie border border-slate-400 flex  justify-center transition duration-300"
+    >
       <img className="h-full transition duration-300" src={movieImage} alt="" />
       {showHover && (
         <button
@@ -32,7 +39,7 @@ const SingleMovie = ({ movie, showHover }: SingleMovieProps) => {
       <h2 className="absolute top-10 text-center w-full z-1 invisible">
         {movie.name}
       </h2>
-    </li>
+    </motion.li>
   );
 };
 

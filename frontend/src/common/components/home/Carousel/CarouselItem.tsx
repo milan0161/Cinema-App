@@ -8,7 +8,7 @@ const CarouselItem = ({ image }: CarouselItemProps) => {
     : `${image}`;
   return (
     <img
-      className=" max-h-[450px] aspect-[3/4]"
+      className="h-[450px] aspect-[3/4]"
       // src={`${publicUrl}/${image}`}
       src={movieImage}
       alt=""

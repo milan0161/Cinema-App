@@ -1,9 +1,12 @@
+import { AnimatePresence } from 'framer-motion';
 import AuthForm from '../../common/components/form/AuthForm';
 
 const LoginPage = () => {
   return (
     <div className="min-h-screen">
-      <AuthForm />
+      <AnimatePresence>
+        <AuthForm />
+      </AnimatePresence>
     </div>
   );
 };

@@ -39,3 +39,14 @@ export interface EditMovie {
 export interface Images {
   images: { image: string; title: string; description: string }[];
 }
+
+export interface SearchMovies {
+  searchTerm: string;
+  pageSize: number;
+  pageNumber: number;
+}
+export interface PaginationResponse<T> {
+  totalCount: number;
+  totalPages: number;
+  data: T;
+}

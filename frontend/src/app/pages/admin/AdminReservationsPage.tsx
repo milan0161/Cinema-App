@@ -59,7 +59,7 @@ const AdminReservationsPage = () => {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full overflow-auto">
       <div className="flex flex-row justify-end mt-2 mr-2">
         <AdminReservatiosFilter
           isShowProjections={showProjections}

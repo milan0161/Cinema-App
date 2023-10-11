@@ -4,7 +4,7 @@ import LoginPage from '../pages/LoginPage';
 import MovieLayout from '../pages/MovieLayout';
 import MoviesPage from '../pages/MoviesPage';
 import ProgramPage from '../pages/ProgramPage';
-import RegisterPage from '../pages/RegisterPage';
+
 import RootLayout from '../pages/RootLayout';
 import SingleMoviePage from '../pages/SingleMoviePage';
 
@@ -15,7 +15,7 @@ import AdminRoot from '../pages/admin/AdminRoot';
 import AdminGuard from './AdminGuard';
 import ProjectionDetailsPage from '../pages/ProjectionDetailsPage';
 import AdminReservationsPage from '../pages/admin/AdminReservationsPage';
-import AdminDashboardPage from '../pages/admin/AdminDashboardPage';
+import AdminDashboardPage from '../pages/admin/AdminDashBoardPage';
 import AboutPage from '../pages/AboutPage';
 
 export const router = createBrowserRouter([
@@ -26,10 +26,6 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <HomePage />,
-      },
-      {
-        path: 'register',
-        element: <RegisterPage />,
       },
       {
         path: 'auth',
