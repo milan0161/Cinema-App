@@ -3,7 +3,6 @@ using API.DTOs;
 using API.Entities;
 using API.Interfaces;
 using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Repositories
@@ -39,18 +38,12 @@ namespace API.Repositories
                 seats[addReservationDto.SeatsNumber[i] - 1].Available = false;
                 seats[addReservationDto.SeatsNumber[i] - 1].Reservation = reservation;
                 reservedSeats[i] = seats[addReservationDto.SeatsNumber[i] - 1];
-                // reservation.Seats.Append(seats[addReservationDto.SeatsNumber[i] - 1]);
             }
 
             await _context.Reservations.AddAsync(reservation);
 
         }
 
-        public async Task<ReservationDto[]> GetReservationsByProjection(int projectionId)
-        {
-            var reservations = await _context.Reservations.Where(x => x.ProjectionId == projectionId).ProjectTo<ReservationDto>(_mapper.ConfigurationProvider).ToArrayAsync();
-            return reservations;
-        }
 
         public Task GetReservationsForUser(int userId)
         {

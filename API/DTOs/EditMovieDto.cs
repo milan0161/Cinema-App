@@ -1,11 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace API.DTOs
 {
-    public class EditMovieDto
+    public sealed class EditMovieDto
     {
         public string Name { get; set; }
         public string Country { get; set; }

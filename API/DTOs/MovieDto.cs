@@ -2,7 +2,7 @@
 
 namespace API.DTOs
 {
-    public class MovieDto
+    public sealed class MovieDto
     {
         public int Id { get; set; }
         public string Name { get; set; }

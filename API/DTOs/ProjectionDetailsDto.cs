@@ -3,7 +3,7 @@ using API.Entities;
 
 namespace API.DTOs
 {
-    public class ProjectionDetailsDto
+    public sealed class ProjectionDetailsDto
     {
         public int Id { get; set; }
         public Movie Movie { get; set; }

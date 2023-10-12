@@ -5,7 +5,6 @@ using API.Entities;
 using API.Interfaces;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Repositories
@@ -39,9 +38,6 @@ namespace API.Repositories
             };
 
             int numberOfSeats = addProjectionDto.HallName.Equals("MainHall") ? 100 : 70;
-            // int numberOfSeats;
-            // if (addProjectionDto.HallName.Equals("MainHall")) numberOfSeats = 100;
-            // else numberOfSeats = 70;
 
             List<Seat> seats = new List<Seat>();
 
@@ -88,22 +84,9 @@ namespace API.Repositories
             var datum = date.Split('-');
             var dateOnly = new DateTime(int.Parse(datum[0]), int.Parse(datum[1]), int.Parse(datum[2]));
 
-
-            // var query = _context.Projections
-            //  .AsQueryable();
-            // var projections = _context.Projections.Where(x => DateOnly.FromDateTime(x.ShowingTime).Equals(dateOnly));
-            // var p = await projections.ProjectTo<ProjectionDto>(_mapper.ConfigurationProvider).ToArrayAsync();
-            // var projections = query.Where(
-            //   p => DateOnly.FromDateTime(p.ShowingTime).Equals(dateOnly)
-            // ).ProjectTo<ProjectionDto>(_mapper.ConfigurationProvider).ToListAsync();
-
-
-
             var projections = await _context.Projections.Where(x => x.ShowingTime.Date.Equals(dateOnly)).ProjectTo<ProjectionDto>(_mapper.ConfigurationProvider).ToArrayAsync();
 
-
             return projections;
-
 
         }
 
@@ -122,10 +105,6 @@ namespace API.Repositories
         {
             return await _context.Projections.AnyAsync(x => x.Id == id);
         }
-        public async Task<bool> SaveAllAsync()
-        {
-            return await _context.SaveChangesAsync() > 0;
-        }
 
         public async Task<IEnumerable<ProjectionDto>> GetAllProjectionsAsync()
         {
@@ -139,5 +118,11 @@ namespace API.Repositories
             var projections = await _context.Projections.OrderByDescending(x => x.ShowingTime).Take(6).ProjectTo<ProjectionDto>(_mapper.ConfigurationProvider).ToListAsync();
             return projections;
         }
+
+        public async Task<bool> SaveAllAsync()
+        {
+            return await _context.SaveChangesAsync() > 0;
+        }
+
     }
 }

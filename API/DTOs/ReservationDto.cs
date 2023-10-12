@@ -1,7 +1,7 @@
 
 namespace API.DTOs
 {
-    public class ReservationDto
+    public sealed class ReservationDto
     {
         public int Id { get; set; }
         public int UserId { get; set; }

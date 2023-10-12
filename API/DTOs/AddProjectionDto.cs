@@ -1,6 +1,6 @@
 namespace API.DTOs
 {
-    public class AddProjectionDto
+    public sealed class AddProjectionDto
     {
         public int MovieId { get; set; }
         public DateTime ShowingTime { get; set; }

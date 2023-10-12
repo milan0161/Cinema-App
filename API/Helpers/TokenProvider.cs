@@ -39,16 +39,10 @@ namespace API.Helpers
                 Expires = DateTime.Now.AddHours(1),
                 SigningCredentials = signingCredentials
             };
-            // var tokene = new JwtSecurityToken(
-
-            //     claims: claims,
-            //     expires: DateTime.Now.AddHours(1),
-            //     signingCredentials: signingCredentials
-            // );
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var token = tokenHandler.CreateToken(tokenDescriptor);
-            // .WriteToken(token);
+
             return tokenHandler.WriteToken(token);
         }
     }

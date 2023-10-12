@@ -32,14 +32,6 @@ namespace API.Controllers
 
             return Ok();
         }
-        [Authorize]
-        [HttpGet("get-reservations-for-projection/{id}")]
-        public async Task<ActionResult<IEnumerable<ReservationDto>>> GetReservationsForProjection(int id)
-        {
-            ReservationDto[] reservations = await _reservationRepository.GetReservationsByProjection(id);
-
-            return Ok(reservations);
-        }
 
     }
 }

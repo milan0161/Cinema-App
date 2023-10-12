@@ -6,7 +6,7 @@ using API.Entities;
 
 namespace API.DTOs
 {
-    public class MovieDetailsDto
+    public sealed class MovieDetailsDto
     {
         public int Id { get; set; }
         public string Name { get; set; }

@@ -54,29 +54,11 @@ namespace API.Data
                 .HasForeignKey(m => m.MovieId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            // builder.Entity<Projection>()
-            //     .HasOne(pr => pr.Movie)
-            //     .WithMany(pr => pr.Projections)
-            //     .HasForeignKey(pr => pr.MovieId)
-            //     .OnDelete(DeleteBehavior.Restrict)
-            //     .IsRequired();
-
-
-
             builder.Entity<Hall>()
                 .HasMany(h => h.Projections)
                 .WithOne(pr => pr.Hall)
                 .HasForeignKey(pr => pr.HallId)
                 .OnDelete(DeleteBehavior.Cascade);
-
-            // builder.Entity<Projection>()
-            //     .HasOne(pr => pr.Hall)
-            //     .WithMany(h => h.Projections)
-            //     .HasForeignKey(pr => pr.HallId)
-            //     .OnDelete(DeleteBehavior.Restrict)
-            //     .IsRequired();
-
-
 
             builder.Entity<Projection>()
                 .HasMany(h => h.Seats)
@@ -103,12 +85,6 @@ namespace API.Data
                 .HasForeignKey(s => s.ReservationId)
                 .IsRequired(false)
                 .OnDelete(DeleteBehavior.NoAction);
-            // builder.Entity<Seat>()
-            //     .HasOne(s => s.Hall)
-            //     .WithMany(h => h.Seats)
-            //     .HasForeignKey(s => s.HallId)
-            //     .IsRequired();
-
         }
 
         private void AddTimeStamps()
