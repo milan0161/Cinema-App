@@ -3,10 +3,10 @@ type ProjectionTimeProps = {
 };
 
 const ProjectionTime = ({ showingTime }: ProjectionTimeProps) => {
-  const time = new Date(showingTime!).toLocaleDateString('en', {
+  const time = new Date(showingTime!).toLocaleDateString('en-Us', {
     minute: '2-digit',
+    hour12: false,
     hour: '2-digit',
-    second: '2-digit',
     month: 'long',
     weekday: 'long',
     day: '2-digit',

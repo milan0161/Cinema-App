@@ -10,7 +10,7 @@ const ProjectionMovie = ({ movie }: ProjectionMovieProps) => {
     ? `${publicUrl}/${movie?.mainPhoto}`
     : `${movie?.mainPhoto}`;
   return (
-    <section className="flex-1 border border-slate-300 mt-10 flex flex-row max-h-[500px]">
+    <section className="flex-1 h-fit projection_details_movie mt-10 flex flex-row text-sm max-h-[500px] w-[500px] xl:w-full">
       <div className="flex-1">
         <img className="w-full h-full" src={movieImage} />
       </div>

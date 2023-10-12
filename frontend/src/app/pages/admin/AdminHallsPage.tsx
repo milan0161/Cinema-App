@@ -3,7 +3,7 @@ import { useGetHallsQuery } from '../../../features/hall/api/hallApi';
 import Hall from '../../../features/hall/data/Hall';
 
 const AdminHallsPage = () => {
-  const { data, isLoading, isError, error } = useGetHallsQuery();
+  const { data, isLoading } = useGetHallsQuery();
 
   if (isLoading) {
     return <LoadingIndicator />;

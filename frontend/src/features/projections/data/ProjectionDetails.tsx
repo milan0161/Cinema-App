@@ -6,6 +6,7 @@ import ReservationDetails from './ReservationDetails';
 import ProjectionTime from './ProjectionTime';
 import ProjectionMovie from './ProjectionMovie';
 import LoadingIndicator from '../../../common/components/ui/LoadingIndicator';
+import HorizontalLine from '../../../common/components/ui/HorizontalLine';
 
 type ProjectionDetailsProps = {
   id: string;
@@ -28,15 +29,14 @@ const ProjectionDetails = ({ id }: ProjectionDetailsProps) => {
   if (isLoading) {
     return <LoadingIndicator />;
   }
-  console.log(data);
   return (
     <>
       <h1 className="text-center mt-4">
         <ProjectionTime showingTime={data?.showingTime} />
         <span> In {data?.hall.name}</span>
       </h1>
-      <div className="w-full flex flex-row">
-        <div className="flex flex-col mt-10  gap-y-4 flex-1">
+      <div className="w-full flex flex-col-reverse items-center xl:flex-row">
+        <div className="flex flex-col mt-10 gap-y-4 flex-1 items-center">
           <ReservationDetails
             price={data?.ticketPrice}
             selectedSeats={selectedSeats}
@@ -55,6 +55,9 @@ const ProjectionDetails = ({ id }: ProjectionDetailsProps) => {
               );
             })}
           </ul>
+          <div className="w-full mt-10 rotate-180">
+            <HorizontalLine />
+          </div>
         </div>
         <ProjectionMovie movie={data?.movie} />
       </div>

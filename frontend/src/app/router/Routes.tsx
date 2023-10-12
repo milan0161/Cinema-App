@@ -74,7 +74,6 @@ export const router = createBrowserRouter([
       },
       {
         path: 'movies',
-        // element: <MoviesPage />,
         element: <MovieLayout />,
         children: [
           {

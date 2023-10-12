@@ -50,6 +50,9 @@
   .nav_li_active {
     @apply text-blue-600 hover:text-white;
   }
+  .projection_details_movie {
+    box-shadow: rgba(250, 249, 249, 0.473) 0px 3px 8px;
+  }
   .single_movie {
     box-shadow: rgba(250, 249, 249, 0.473) 0px 3px 8px;
   }

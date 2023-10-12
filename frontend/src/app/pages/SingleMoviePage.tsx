@@ -22,14 +22,26 @@ const SingleMoviePage = () => {
   return (
     <section className="my-2 flex flex-row shadow-sm shadow-white rounded overflow-hidden movie_details">
       <div className="">
-        <img className="w-[500px] h-[700px]" src={movieImage} alt="" />
+        <img
+          className="w-[500px] h-[700px]"
+          src={movieImage}
+          alt={data?.name}
+        />
       </div>
       <div className=" flex-1 flex flex-col px-10">
-        <h1 className="text-center my-4 text-[45px]">{data?.name}</h1>
+        <h1 className="text-center my-4 text-[35px]">{data?.name}</h1>
         <div className="flex flex-col gap-y-10">
           <p className="movie_descrip">
             <strong>Year:</strong>
             {data?.year}
+          </p>
+          <p className="movie_descrip">
+            <strong>Country:</strong>
+            {data?.country}
+          </p>
+          <p className="movie_descrip">
+            <strong>Genre:</strong>
+            {data?.genre}
           </p>
           <p className="movie_descrip">
             <strong>Duration:</strong>
@@ -46,6 +58,10 @@ const SingleMoviePage = () => {
           <p className="movie_descrip">
             <strong>Description:</strong>
             {data?.description}
+          </p>
+          <p className="movie_descrip">
+            <strong>Genre:</strong>
+            {data?.genre}
           </p>
         </div>
       </div>

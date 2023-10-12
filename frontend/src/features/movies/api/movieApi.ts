@@ -42,7 +42,6 @@ const movieApi = apiSlice.injectEndpoints({
         params: { searchTerm: searchTerm, pageSize, pageNumber },
         method: 'GET',
         transformResponse: (responseData) => {
-          console.log(responseData);
           return movieAdapter.setAll(initialState, responseData);
         },
       }),

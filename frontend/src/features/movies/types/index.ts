@@ -6,7 +6,7 @@ export interface Movie {
   description: string;
   director: string;
   genre: string;
-  mainPhoto: File;
+  mainPhoto: string;
   year: number;
   duration: number;
 }
