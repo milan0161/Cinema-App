@@ -43,6 +43,8 @@ try
     await Seed.SeedUsers(userManager, roleManager);
     await SeedProjections.AddProjections(context);
     await Seed.SeedMovies(context);
+    await Seed.SeedProjection(context);
+    await Seed.SeedCoverPhotos(context);
 }
 catch (Exception ex)
 {

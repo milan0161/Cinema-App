@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import Modal from '../../../common/components/ui/Modal';
 import { AnimatePresence, motion } from 'framer-motion';
 import EditMovieForm from '../../../common/components/form/EditMovieForm';
+import AddCoverPhotoForm from '../../../common/components/form/AddCoverPhotoForm';
 
 type SingleMovieProps = {
   movie: Movie;
@@ -19,6 +20,7 @@ const AdminSingleMovie = ({
 }: SingleMovieProps): React.JSX.Element => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isEdit, setIsEdit] = useState<boolean>(false);
+  const [addCoverPhoto, setAddCoverPhoto] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const navigate = useNavigate();
 
@@ -30,6 +32,11 @@ const AdminSingleMovie = ({
   const projectionHandler = () => {
     setIsOpen(true);
     setAnchorEl(null);
+  };
+  const addCoverPhotoHandler = () => {
+    setAnchorEl(null);
+    setIsOpen(false);
+    setAddCoverPhoto(true);
   };
 
   const isEditHandler = () => {
@@ -43,15 +50,19 @@ const AdminSingleMovie = ({
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.3, delay: i * 0.03 }}
-      className="border border-slate-300 rounded relative"
+      className=" rounded relative"
     >
-      <div className="text-right absolute right-1 z-10 top-1">
+      <div className="text-right absolute right-1 z-10 top-1 bg-black/80 rounded">
         <DropMenu anchorEl={anchorEl} setAnchorEl={setAnchorEl} text="Options">
           <DropMenuItem text="Edit Movie" handleClose={isEditHandler} />
           <DropMenuItem text="See Details" handleClose={detailsHandler} />
           <DropMenuItem
             text="Create Projection"
             handleClose={projectionHandler}
+          />
+          <DropMenuItem
+            text="Add Cover Photo"
+            handleClose={addCoverPhotoHandler}
           />
         </DropMenu>
       </div>
@@ -72,6 +83,19 @@ const AdminSingleMovie = ({
             <EditMovieForm
               id={movie.id}
               cancelHandler={() => setIsEdit(false)}
+            />
+          </Modal>
+        )}
+      </AnimatePresence>
+      <AnimatePresence>
+        {addCoverPhoto && (
+          <Modal
+            className="fixed w-full z-50 top-[20%]"
+            onClickBackdrop={() => setAddCoverPhoto(false)}
+          >
+            <AddCoverPhotoForm
+              movieId={movie.id}
+              cancelHandler={() => setAddCoverPhoto(false)}
             />
           </Modal>
         )}

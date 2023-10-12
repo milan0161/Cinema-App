@@ -18,9 +18,9 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<MovieDto>>> GetMovies()
+        public async Task<ActionResult<PaginationResponse<List<MovieDto>>>> GetMovies([FromQuery] SearchMovieDto searchMovieDto)
         {
-            return Ok(await _movieRepository.GetMovies());
+            return Ok(await _movieRepository.GetMovies(searchMovieDto));
 
         }
 
@@ -97,7 +97,7 @@ namespace API.Controllers
 
         [Authorize(Policy = "RequireAdminRole")]
         [HttpPost("add-cover-photo/{movieId}")]
-        public async Task<ActionResult> AddCoverPhoto([FromForm] IFormFile file, int movieId)
+        public async Task<ActionResult> AddCoverPhoto([FromForm] IFormFile file, [FromRoute] int movieId)
         {
             var movie = await _movieRepository.GetMovie(movieId);
             CoverPhoto coverPhoto = new CoverPhoto
@@ -105,6 +105,10 @@ namespace API.Controllers
                 MovieId = movie.Id,
             };
             var folderPath = GetFilePath(movie.Name);
+            if (!System.IO.File.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
             string[] permittedExt = { ".png", ".jpg", ".jpeg" };
             var ext = Path.GetExtension(file.FileName).ToLowerInvariant();
             if (string.IsNullOrEmpty(ext) || !permittedExt.Contains(ext))

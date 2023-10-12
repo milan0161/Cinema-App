@@ -28,7 +28,7 @@ const ProjectionDetails = ({ id }: ProjectionDetailsProps) => {
   if (isLoading) {
     return <LoadingIndicator />;
   }
-
+  console.log(data);
   return (
     <>
       <h1 className="text-center mt-4">

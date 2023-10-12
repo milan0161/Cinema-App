@@ -22,9 +22,13 @@ const SingleMovie = ({ movie, showHover, i }: SingleMovieProps) => {
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.03, delay: i * 0.03 }}
-      className="w-full h-[350px] relative col-span-1 single_movie border border-slate-400 flex  justify-center transition duration-300"
+      className=" h-[350px] relative col-span-1 single_movie flex  justify-center transition duration-300 max-w-[235px] "
     >
-      <img className="h-full transition duration-300" src={movieImage} alt="" />
+      <img
+        className="h-full w-full transition duration-300"
+        src={movieImage}
+        alt=""
+      />
       {showHover && (
         <button
           onClick={clickHandler}

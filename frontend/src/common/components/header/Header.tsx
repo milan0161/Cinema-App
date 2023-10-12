@@ -1,18 +1,14 @@
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../../app/store/store';
 import Logo from '../../../assets/CinemaIcon.svg';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faTwitter,
-  faInstagram,
-  faFacebookSquare,
-} from '@fortawesome/free-brands-svg-icons';
 import { Link, useNavigate } from 'react-router-dom';
 import MainNav from '../navigation/MainNav';
 import DropMenu from '../navigation/DropMenu';
 import DropMenuItem from '../navigation/DropMenuItem';
 import { logout } from '../../../features/auth-module/authSlice';
 import { removeToken } from '../../../app/utils/saveToken';
+import HorizontalLine from '../ui/HorizontalLine';
+import SocialIcons from './SocialIcons';
 
 const Header = (): React.JSX.Element => {
   const userState = useAppSelector((state) => state.auth);
@@ -37,53 +33,45 @@ const Header = (): React.JSX.Element => {
     navigate('admin');
     setAnchorEl(null);
   };
+  const klase: string = 'flex flex-row w-full items-center mt-5';
 
   return (
-    <header className="flex flex-col px-10">
-      <div className="flex flex-row justify-between w-full my-2">
-        <div className="flex flex-row gap-5">
-          <a href="http://www.facebook.com">
-            <FontAwesomeIcon
-              className="h-6 text-white"
-              icon={faFacebookSquare}
-            />
-          </a>
-          <a href="http://www.twitter.com">
-            <FontAwesomeIcon className="h-6 text-white" icon={faTwitter} />
-          </a>
-          <a href="http://www.instagram.com">
-            {' '}
-            <FontAwesomeIcon className="h-6 text-white" icon={faInstagram} />
-          </a>
+    <header className="flex flex-col gap-y-5">
+      <div className="grid grid-cols-3 grid-rows-2 xl:grid-cols-12 xl:grid-rows-1">
+        <div className=" col-span-1  flex flex-row items-center justify-center gap-5 xl:col-span-3">
+          <Link
+            to={'/'}
+            className="flex flex-row lg:w-96 items-center justify-center lg:gap-5 gap-2"
+          >
+            <img className="bg-white w-10" src={Logo} alt="Cinema" />
+            <h1 className="lg:text-[2.5rem] text-white">Cinema</h1>
+          </Link>
         </div>
-        <DropMenu
-          anchorEl={anchorEl}
-          setAnchorEl={setAnchorEl}
-          text={userState.isAuth ? userState.username : 'Account'}
-        >
-          {!userState.isAuth && (
-            <DropMenuItem text="Login" handleClose={loginHandler} />
-          )}
-          {userState.isAdmin && (
-            <DropMenuItem text="Admin Panel" handleClose={adminHandler} />
-          )}
-          {userState.isAuth && (
-            <DropMenuItem text="Logout" handleClose={logoutHandler} />
-          )}
-        </DropMenu>
+        <nav className="row-start-2 col-span-3  xl:row-start-1 xl:col-start-4 xl:col-span-5">
+          <MainNav />
+        </nav>
+        <SocialIcons className="col-start-2 col-span-1  flex items-center justify-center xl:col-start-9 xl:col-span-2" />
+
+        <div className="flex justify-center items-center xl:col-start-11 xl:col-span-2">
+          <DropMenu
+            className=""
+            anchorEl={anchorEl}
+            setAnchorEl={setAnchorEl}
+            text={userState.isAuth ? userState.username : 'Account'}
+          >
+            {!userState.isAuth && (
+              <DropMenuItem text="Login" handleClose={loginHandler} />
+            )}
+            {userState.isAdmin && (
+              <DropMenuItem text="Admin Panel" handleClose={adminHandler} />
+            )}
+            {userState.isAuth && (
+              <DropMenuItem text="Logout" handleClose={logoutHandler} />
+            )}
+          </DropMenu>
+        </div>
       </div>
-      <div className=" flex flex-row w-96 items-center justify-center gap-5 py-4">
-        <Link
-          to={'/'}
-          className="flex flex-row w-96 items-center justify-center gap-5 py-4"
-        >
-          <img className="bg-white w-10" src={Logo} alt="Cinema" />
-          <h1 className="text-[40px] text-white">Cinema</h1>
-        </Link>
-      </div>
-      <nav className="w-full mx-auto lg:w-1/2">
-        <MainNav />
-      </nav>
+      <HorizontalLine />
     </header>
   );
 };

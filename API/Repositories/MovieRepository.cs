@@ -39,10 +39,29 @@ namespace API.Repositories
             return await _context.Movies.Where(x => x.Name == name).ProjectTo<MovieDetailsDto>(_mapper.ConfigurationProvider).FirstOrDefaultAsync();
         }
 
-        public async Task<List<MovieDto>> GetMovies()
+        public async Task<PaginationResponse<List<MovieDto>>> GetMovies(SearchMovieDto searchMovieDto)
         {
-            var movies = await _context.Movies.ToListAsync();
-            return _mapper.Map<List<MovieDto>>(movies);
+            var searchTerm = searchMovieDto.SearchTerm ?? "";
+            // var movies = await _context.Movies.Where(x => x.Name.StartsWith(searchTerm)).ToListAsync();
+            // return _mapper.Map<List<MovieDto>>(movies);
+            var moviesQuery = _context.Movies.AsQueryable();
+            int total = await moviesQuery.CountAsync();
+            int totalPages = (int)Math.Ceiling(total / (double)searchMovieDto.PageSize);
+            if (searchMovieDto.PageNumber > totalPages)
+            {
+                throw new Exception("no more pages to display");
+            }
+
+            moviesQuery = moviesQuery.Where(x => x.Name.Contains(searchTerm)).Skip((searchMovieDto.PageNumber - 1) * searchMovieDto.PageSize).Take(searchMovieDto.PageSize);
+            // moviesQuery = moviesQuery.Where(x => x.Name.StartsWith(searchTerm) && x.Id > searchMovieDto.Cursor)
+            //     .Take(10)
+            //     .OrderBy(x => x.Id);
+            var movies = await moviesQuery.ProjectTo<MovieDto>(_mapper.ConfigurationProvider).ToListAsync();
+            long cursor = movies[^1].Id;
+
+            return new PaginationResponse<List<MovieDto>>(total, totalPages, movies);
+
+
         }
 
         public async Task<bool> SaveAllAsync()
@@ -62,7 +81,7 @@ namespace API.Repositories
 
         public async Task<List<string>> GetFiveMovieImages()
         {
-            var images = await _context.Movies.Take(5).Select(x => x.MainPhoto).ToListAsync();
+            var images = await _context.Movies.OrderByDescending(x => x.CreatedAt).Take(5).Select(x => x.CoverPhoto.Photo).ToListAsync();
             return images;
         }
     }

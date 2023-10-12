@@ -20,7 +20,7 @@ const SingleMoviePage = () => {
     : `${data?.mainPhoto}`;
 
   return (
-    <section className="my-2 flex flex-row border border-slate-300 rounded overflow-hidden">
+    <section className="my-2 flex flex-row shadow-sm shadow-white rounded overflow-hidden movie_details">
       <div className="">
         <img className="w-[500px] h-[700px]" src={movieImage} alt="" />
       </div>

@@ -17,9 +17,9 @@ const SingleProjection = ({ projection }: SingleProjectionProps) => {
     : `${projection.movie.mainPhoto}`;
 
   return (
-    <li className="border border-slate-300 w-1/3 flex flex-col items-center max-w-[450px] rounded">
-      <div className="flex flex-row gap-x-5 h-5/6">
-        <div className="w-1/2">
+    <li className="shadow-md shadow-slate-400 flex flex-col items-center max-w-[450px] aspect-[1/1] rounded md:w-full">
+      <div className="flex flex-row gap-x-5 h-5/6 ">
+        <div className="w-1/2 ">
           <img className="w-full h-full" src={movieImage} />
         </div>
         <div className="py-5 w-1/2">

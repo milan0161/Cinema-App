@@ -3,6 +3,7 @@ import AdminProjections from '../../../features/admin/data/AdminProjections';
 import EditProjectionForm from '../../../common/components/form/EditProjectionForm';
 import { IProjection } from '../../../features/projections/types';
 import ProjectionDatePagination from '../../../features/projections/data/ProjectionDatePagination';
+import { AnimatePresence } from 'framer-motion';
 
 const AdminProjectionsPage = () => {
   const [isEdit, setIsEdit] = useState(false);
@@ -36,15 +37,17 @@ const AdminProjectionsPage = () => {
 
   return (
     <section className="w-full">
-      {!isEdit && (
-        <div className="flex gap-x-2 justify-center items-center p-2">
-          <ProjectionDatePagination
-            date={date}
-            setTomorow={nextDay}
-            setYesterday={prevDay}
-          />
-        </div>
-      )}
+      <AnimatePresence>
+        {!isEdit && (
+          <div className="flex gap-x-2 justify-center items-center p-2">
+            <ProjectionDatePagination
+              date={date}
+              setTomorow={nextDay}
+              setYesterday={prevDay}
+            />
+          </div>
+        )}
+      </AnimatePresence>
       {!isEdit && <AdminProjections showEdit={showEditHandler} date={date} />}
       {isEdit && (
         <EditProjectionForm showEdit={setIsEdit} projection={projectionData} />

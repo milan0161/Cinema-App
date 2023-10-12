@@ -1,5 +1,4 @@
 import { useState } from 'react';
-// import AdminSearchBar from '@components/admin/AdminSearchBar';
 import AdminSearchBar from '../../../common/components/admin/AdminSearchBar';
 import AddMovieForm from '../../../common/components/form/AddMovieForm';
 import MoviesList from '../../../features/movies/data/AdminMoviesList';
@@ -45,7 +44,7 @@ const AdminMoviesPage = () => {
     setPage(value);
   };
   return (
-    <div className="w-full overflow-y-scroll px-2 flex flex-col ">
+    <div className="w-full overflow-auto px-2 flex flex-col ">
       {isError ? (
         <p className="text-center text-red-600">{error?.message}</p>
       ) : (
@@ -69,16 +68,15 @@ const AdminMoviesPage = () => {
       {!isAddingMovie && <AdminSearchBar searchHandler={searchMovieHandler} />}
       {!isAddingMovie && (
         <>
-          <div className="flex flex-col">
-            <MoviesList
-              // movies={response?.data}
-              movies={response?.data}
-            />
-            <PaginationComponent
-              count={response?.totalPages}
-              page={page}
-              onChange={handleChange}
-            />
+          <div className="flex flex-col gap-y-3">
+            <MoviesList movies={response?.data} />
+            {!searchTerm && (
+              <PaginationComponent
+                count={response?.totalPages}
+                page={page}
+                onChange={handleChange}
+              />
+            )}
           </div>
         </>
       )}

@@ -58,7 +58,7 @@ const CarouselContainer = () => {
 
   return (
     <MotionConfig transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}>
-      <div className="mx-auto flex h-full max-w-[330px] flex-col justify-center shadow-lg shadow-white/50">
+      <div className="mx-auto flex h-full w-5/6 2xl:w-[60rem] xl:w-[60rem] flex-col justify-center shadow-lg shadow-white/50">
         <div className=" shadow-slate-300 relative overflow-hidden">
           <motion.button
             animate={{ opacity: 0.7 }}

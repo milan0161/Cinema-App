@@ -6,7 +6,7 @@ namespace API.Interfaces
 {
     public interface IMovieRepository
     {
-        Task<List<MovieDto>> GetMovies();
+        Task<PaginationResponse<List<MovieDto>>> GetMovies(SearchMovieDto searchMovieDto);
         Task<MovieDetailsDto> GetMovieById(int id);
         Task<MovieDetailsDto> GetMovieByName(string name);
         Task AddMovieAsync(Movie movie);

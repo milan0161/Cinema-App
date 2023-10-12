@@ -6,7 +6,7 @@ export interface Movie {
   description: string;
   director: string;
   genre: string;
-  mainPhoto: string;
+  mainPhoto: File;
   year: number;
   duration: number;
 }
@@ -50,3 +50,8 @@ export interface PaginationResponse<T> {
   totalPages: number;
   data: T;
 }
+
+export type AddCoverPhoto = {
+  file: File;
+  movieId: number | string;
+};

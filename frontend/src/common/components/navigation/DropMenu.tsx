@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
 
 type DropMenuProps = {
   children?: React.ReactNode;
@@ -27,14 +26,14 @@ export default function DropMenu({
   };
 
   return (
-    <div className="bg-black/90 rounded">
+    <div className={`${className}`}>
       <Button
         id="basic-button"
         aria-controls={open ? 'basic-menu' : undefined}
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
-        className={className}
+        // className={className}
       >
         {text}
       </Button>
@@ -48,9 +47,6 @@ export default function DropMenu({
         }}
       >
         {children}
-        {/* <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem> */}
       </Menu>
     </div>
   );

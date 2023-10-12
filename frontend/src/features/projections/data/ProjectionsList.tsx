@@ -30,8 +30,8 @@ const ProjectionsList = () => {
 
   return (
     <div>
-      <div className="my-4 flex justify-between items-center">
-        <div>
+      <div className="my-4 flex flex-col lg:flex-row lg:justify-between gap-y-4 justify-center items-center px-4">
+        <div className=" flex items-center">
           <label htmlFor="">Chose Date to see projections on that day </label>
           <input
             value={showingTime}
@@ -54,7 +54,7 @@ const ProjectionsList = () => {
         <h2 className="text-center mt-5">Today we have nothing on repertoar</h2>
       )}
       {data && data?.length > 0 && (
-        <ul className="flex flex-row gap-4 flex-wrap">
+        <ul className="flex flex-row justify-center lg:justify-center gap-4 flex-wrap">
           {data?.map((proj) => {
             return <SingleProjection key={proj.id} projection={proj} />;
           })}

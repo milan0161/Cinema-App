@@ -20,7 +20,7 @@ const HomePage = () => {
           <h2 className="text-center my-5 text-2xl">
             New projections in our cinema
           </h2>
-          <div className="flex flex-row flex-wrap gap-10 mb-10 justify-center">
+          <div className="flex flex-col items-center flex-wrap gap-10 mb-10 justify-center md:flex-row">
             {data &&
               data.map((projection) => {
                 return (

@@ -136,7 +136,7 @@ namespace API.Repositories
 
         public async Task<List<ProjectionDto>> GetNewProjections()
         {
-            var projections = await _context.Projections.Take(6).ProjectTo<ProjectionDto>(_mapper.ConfigurationProvider).ToListAsync();
+            var projections = await _context.Projections.OrderByDescending(x => x.ShowingTime).Take(6).ProjectTo<ProjectionDto>(_mapper.ConfigurationProvider).ToListAsync();
             return projections;
         }
     }

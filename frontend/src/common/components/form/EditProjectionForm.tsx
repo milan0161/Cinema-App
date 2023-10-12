@@ -7,6 +7,8 @@ import { useEditProjectionMutation } from '../../../features/projections/api/pro
 import LoadingIndicator from '../ui/LoadingIndicator';
 import { showSuccess } from '../../../app/utils/ToastMsg';
 import ErrorBlock from '../ui/ErrorBlock';
+import { motion } from 'framer-motion';
+import ReservationDate from '../../../features/admin/data/ReservationDate';
 
 type EditProjectionFormProps = {
   projection: IProjection | null;
@@ -19,7 +21,7 @@ const EditProjectionForm = ({
 }: EditProjectionFormProps) => {
   const { register, handleSubmit } = useForm<EditProjection>({
     defaultValues: {
-      showingTime: projection?.showingTime,
+      showingTime: projection!.showingTime,
       ticketPrice: projection?.ticketPrice,
     },
   });
@@ -43,17 +45,19 @@ const EditProjectionForm = ({
   if (isLoading) {
     return <LoadingIndicator />;
   }
-
   return (
     <>
       {isError && <ErrorBlock message={error?.message!} title={error?.name!} />}
-      <form
+      <motion.form
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 30 }}
         onSubmit={handleSubmit(editProjectionHandler)}
         className="edit_projection_form mt-[10%]"
       >
         <h2 className="text-center my-2">
           Editing projection for {projection?.movie.name} at{' '}
-          {projection?.showingTime}
+          <ReservationDate date={projection!.showingTime} />
         </h2>
         <div className="edit_projection_form_input_div">
           <label htmlFor="showingTIme">ShowingTime: </label>
@@ -61,6 +65,7 @@ const EditProjectionForm = ({
             {...register('showingTime')}
             type="datetime-local"
             id="showingTime"
+            defaultValue={new Date(projection!.showingTime).toISOString()}
           />
         </div>
         <div className="edit_projection_form_input_div">
@@ -94,7 +99,7 @@ const EditProjectionForm = ({
             Confirm
           </button>
         </div>
-      </form>
+      </motion.form>
     </>
   );
 };

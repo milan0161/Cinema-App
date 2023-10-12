@@ -26,7 +26,7 @@ const RootLayout = () => {
   }, []);
 
   return (
-    <div className="w-[80%] mx-auto">
+    <div className="w-full 2xl:w-4/5 mx-auto xl:w-4/5">
       <Header />
       <Outlet />
       <Footer />

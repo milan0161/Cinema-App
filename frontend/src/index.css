@@ -50,6 +50,9 @@
   .nav_li_active {
     @apply text-blue-600 hover:text-white;
   }
+  .single_movie {
+    box-shadow: rgba(250, 249, 249, 0.473) 0px 3px 8px;
+  }
   .single_movie:hover h2,
   .single_movie:hover button {
     visibility: visible;
@@ -115,14 +118,5 @@
   }
   .footer_shadow {
     box-shadow: rgba(226, 223, 223, 0.24) 0px 3px 8px;
-  }
-
-  @keyframes loading_indicator {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
   }
 }

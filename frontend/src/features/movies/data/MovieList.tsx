@@ -33,7 +33,7 @@ const MovieList = (): JSX.Element => {
 
   return (
     <div className="flex flex-col gap-y-5">
-      <ul className="grid grid-cols-6 border border-slate-300 grid-flow-row gap-y-10 gap-x-2 p-2 overflow-hidden">
+      <ul className="flex flex-col flex-wrap items-center justify-center sm:flex-row md:grid md:grid-cols-3 lg:grid-cols-4  2xl:grid-cols-6 grid-flow-row gap-y-7 gap-x-2 p-2 overflow-hidden rounded">
         {response?.data?.map((m, i) => {
           return <SingleMovie i={i} key={m.id} movie={m} showHover={true} />;
         })}

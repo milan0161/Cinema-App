@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { useAddMovieMutation } from '../../../features/movies/api/movieApi';
 import { useForm } from 'react-hook-form';
 import { AddMovieFormValue } from '../../../features/movies/types';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { showSuccess } from '../../../app/utils/ToastMsg';
 type AddMovieFormProps = {
   cancelHandler: () => void;

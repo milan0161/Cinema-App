@@ -17,6 +17,19 @@ namespace API.Data
         public DbSet<Hall> Halls { get; set; }
         public DbSet<Seat> Seats { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
+
+        public override int SaveChanges()
+        {
+            AddTimeStamps();
+            return base.SaveChanges();
+        }
+
+        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            AddTimeStamps();
+            return await base.SaveChangesAsync(cancellationToken);
+        }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -98,7 +111,23 @@ namespace API.Data
 
         }
 
+        private void AddTimeStamps()
+        {
+            var entities = ChangeTracker.Entries().Where(x => x.Entity is BaseEntity && (x.State is EntityState.Added || x.State is EntityState.Modified));
 
+            foreach (var entity in entities)
+            {
+                var dateNow = DateTime.Now;
+
+                if (entity.State is EntityState.Added)
+                {
+                    ((BaseEntity)entity.Entity).CreatedAt = dateNow;
+                }
+
+                ((BaseEntity)entity.Entity).UpdatedAt = dateNow;
+            }
+
+        }
 
     }
 }

@@ -164,3 +164,4 @@ D:\Cinema\Cinema-Planner\API\bin\Debug\net7.0\Microsoft.AspNetCore.Authenticatio
 D:\Milan Programiranje\Cinema Project\API\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:\Milan Programiranje\Cinema Project\API\bin\Debug\net7.0\API.staticwebassets.runtime.json
 D:\Milan Programiranje\Cinema Project\API\bin\Debug\net7.0\Data\MovieSeedData.json
+D:\Milan Programiranje\Cinema Project\API\bin\Debug\net7.0\Data\CoverPhotoSeedData.json

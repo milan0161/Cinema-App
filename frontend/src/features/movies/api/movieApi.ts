@@ -1,6 +1,7 @@
 import { createEntityAdapter, createSelector } from '@reduxjs/toolkit';
 import { apiSlice } from '../../../app/api/apiSlice';
 import {
+  AddCoverPhoto,
   EditMovie,
   Images,
   Movie,
@@ -64,6 +65,19 @@ const movieApi = apiSlice.injectEndpoints({
       }),
       invalidatesTags: (result, error, arg) => [{ type: 'MOVIES', id: arg.id }],
     }),
+    addCoverPhoto: builder.mutation<void, AddCoverPhoto>({
+      query: ({ movieId, ...data }) => ({
+        url: '/movie/add-cover-photo/' + movieId,
+        method: 'POST',
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+        data: data,
+      }),
+      invalidatesTags: (result, error, arg) => [
+        { type: 'MOVIES', id: arg.movieId },
+      ],
+    }),
     getImages: builder.query<Images, void>({
       query: () => ({
         url: '/movie/get-pictures',
@@ -91,6 +105,7 @@ export const {
   useGetSingleMovieQuery,
   useEditMovieMutation,
   useGetFiveMovieImagesQuery,
+  useAddCoverPhotoMutation,
 } = movieApi;
 //Vrati se posle da sredis ovo s paginaciju
 // const selectMovieResult = movieApi.endpoints.getMovies.select({
