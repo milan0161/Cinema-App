@@ -13,7 +13,7 @@ type ProjectionDetailsProps = {
 };
 
 const ProjectionDetails = ({ id }: ProjectionDetailsProps) => {
-  const { data, isLoading } = useGetProjectionQuery(+id);
+  const { data, isLoading, refetch } = useGetProjectionQuery(+id);
   const [selectedSeats, setSelectedSeats] = useState<Seat[]>([]);
 
   const selectSeatHandler = (seat: Seat) => {
@@ -38,6 +38,7 @@ const ProjectionDetails = ({ id }: ProjectionDetailsProps) => {
       <div className="w-full flex flex-col-reverse items-center xl:flex-row">
         <div className="flex flex-col mt-10 gap-y-4 flex-1 items-center">
           <ReservationDetails
+            refetch={refetch}
             price={data?.ticketPrice}
             selectedSeats={selectedSeats}
             projectionId={data?.id}
